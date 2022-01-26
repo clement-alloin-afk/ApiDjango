@@ -6,8 +6,8 @@ from . import views
 urlpatterns = [
     path('User/', UserList.as_view()),
     path('User/<pk>', UserDetail.as_view()),
-    path('family/', FamilyList.as_view()),
-    path('family/<int:pk>/', FamilyDetail.as_view()),
+    path('Family/', FamilyList.as_view()),
+    path('Family/<int:pk>/', FamilyDetail.as_view()),
     re_path(r'^family/(?P<code>[A-Z0-9]{10})/$', views.FamilyCode),
 ]
 
