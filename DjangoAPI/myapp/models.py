@@ -11,10 +11,14 @@ def get_random_code():
 
 class Family(models.Model):
     nom = models.TextField()
-    code = models.TextField(default=get_random_code)
+    code = models.TextField(null=True)
 
     def __str__(self):
         return self.nom
+
+    def save(self, *args, **kwargs):
+        self.code = get_random_code()
+        return super().save(*args, **kwargs)
 
 
 class User(AbstractBaseUser):
