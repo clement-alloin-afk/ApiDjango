@@ -14,3 +14,6 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['pseudonyme','pseudonymePerso','password','email','refFamily']
 
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)
+

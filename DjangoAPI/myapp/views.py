@@ -29,4 +29,3 @@ def FamilyCode(request, code):
     fam = Family.objects.get(code=code)
     serializer = FamilySerializer(fam)
     return Response(serializer.data)
-# Family.objects.get(code="ABPXNJTKJJ")
