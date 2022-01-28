@@ -8,7 +8,7 @@ urlpatterns = [
     path('User/<pk>', UserDetail.as_view()),
     path('Family/', FamilyList.as_view()),
     path('Family/<int:pk>/', FamilyDetail.as_view()),
-    re_path(r'^family/(?P<code>[A-Z0-9]{10})/$', views.FamilyCode),
+    re_path(r'^Family/(?P<code>[A-Z0-9]{10})/$', views.FamilyCode),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
