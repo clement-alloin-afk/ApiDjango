@@ -1,5 +1,6 @@
-from asyncio.windows_events import NULL
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 import random
 import string
@@ -18,7 +19,18 @@ class Family(models.Model):
 
     def save(self, *args, **kwargs):
         self.code = get_random_code()
+        #test = Category({"nom":"Crème","dureConservation":"2 semaines","refFamily":self.})
         return super().save(*args, **kwargs)
+
+#Populate Catégories et Espace de stockage lors de la crétion d'une famille
+@receiver(post_save, sender=Family)
+def init_new_family(instance, created, raw, **kwargs):
+    if created and not raw:
+        Category.objects.create(nom="Crème",dureConservation="2 semaines", refFamily=instance)
+        Category.objects.create(nom="Charcuterie",dureConservation="2 semaines", refFamily=instance)
+        Category.objects.create(nom="Viande",dureConservation="2 semaines", refFamily=instance)
+        Category.objects.create(nom="Viande surgelée",dureConservation="6 mois", refFamily=instance)
+        Stockage.objects.create(nom="Frigo",dureConservation="1 semaine", refFamily=instance)
 
 class UserManager(BaseUserManager):
     def create_user(self,pseudonyme,email,password,refFamily,pseudonymePerso):
@@ -59,3 +71,26 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+class Repas(models.Model): 
+    nom = models.CharField(max_length=30)
+    refFamily = models.ForeignKey(Family, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ['nom','refFamily']
+
+class Category(models.Model): 
+    nom = models.CharField(max_length=30)
+    dureConservation = models.CharField(max_length=30)
+    refFamily = models.ForeignKey(Family, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ['nom','refFamily']
+
+class Stockage(models.Model): 
+    nom = models.CharField(max_length=30)
+    dureConservation = models.CharField(max_length=30)
+    refFamily = models.ForeignKey(Family, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ['nom','refFamily']
