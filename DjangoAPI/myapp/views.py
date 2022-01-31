@@ -14,6 +14,11 @@ class FamilyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Family.objects.all()
     serializer_class = FamilySerializer
 
+class FamilyMembresList(generics.ListCreateAPIView):
+    serializer_class = UserSerializer
+    def get_queryset(self):
+        return User.objects.filter(refFamily=self.kwargs['pkF'])
+
 #User
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()

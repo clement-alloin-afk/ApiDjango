@@ -33,15 +33,15 @@ def init_new_family(instance, created, raw, **kwargs):
         Stockage.objects.create(nom="Frigo",dureConservation="1 semaine", refFamily=instance)
 
 class UserManager(BaseUserManager):
-    def create_user(self,pseudonyme,email,password,refFamily,pseudonymePerso):
+    def create_user(self,pseudonyme,email,password,pseudonymePerso,refFamily):
         email = self.normalize_email(email)
-        user = self.model(pseudonyme=pseudonyme,pseudonymePerso=pseudonyme,email=email)
+        user = self.model(pseudonyme=pseudonyme,pseudonymePerso=pseudonymePerso,email=email,refFamily=refFamily)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
     def create_superuser(self,pseudonyme,email,password):
-        user = self.create_user(pseudonyme,email,password=password,)
+        user = self.create_user(pseudonyme,email,password=password,pseudonymePerso=pseudonyme,refFamily=None)
         user.is_admin = True
         user.save(using=self._db) 
         return user
