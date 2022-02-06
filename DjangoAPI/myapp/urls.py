@@ -2,7 +2,8 @@ from django.urls import path, re_path
 from rest_framework.urlpatterns import format_suffix_patterns
 from .views import ( FamilyList,FamilyDetail,FamilyMembresList,FamilyRepasList,FamilyRepasDetail, UserList,UserDetail,
 RepasList,RepasDetail, CategoryList, CategoryDetail,StockageList, StockageDetail,
-FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail )
+FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail,ProduitList,ProduitDetail,
+FamilyProduitList )
 from . import views
 
 urlpatterns = [
@@ -16,6 +17,8 @@ urlpatterns = [
     path('Family/<int:pkF>/Category/<pk>', FamilyCategoryDetail.as_view()),
     path('Family/<int:pkF>/Stockage/', FamilyStockageList.as_view()),
     path('Family/<int:pkF>/Stockage/<pk>', FamilyStockageDetail.as_view()),
+    path('Family/<int:pkF>/Produit/', FamilyProduitList.as_view()),
+    # path('Family/<int:pkF>/Produit/<pk>', FamilyProduitDetail.as_view()),
 
     path('User/', UserList.as_view()),
     path('User/<pk>', UserDetail.as_view()), 
@@ -28,6 +31,9 @@ urlpatterns = [
 
     path('Stockage/', StockageList.as_view()),
     path('Stockage/<pk>/', StockageDetail.as_view()),
+
+    path('Produit/', ProduitList.as_view()),
+    path('Produit/<pk>/', ProduitDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

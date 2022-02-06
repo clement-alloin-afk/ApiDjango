@@ -1,8 +1,10 @@
+from asyncio.windows_events import NULL
+from gettext import NullTranslations
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from myapp.models import Family, User, Repas, Category, Stockage
-from myapp.serializers import FamilySerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer
+from myapp.models import Family, User, Repas, Category, Stockage, Produit
+from myapp.serializers import FamilySerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer,ProduitSerializer
 from rest_framework import generics
 
 #Familles
@@ -90,3 +92,29 @@ class FamilyStockageDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = StockageSerializer
     def get_queryset(self):
         return Stockage.objects.filter(refFamily=self.kwargs['pkF'],id=self.kwargs['pk'])
+
+#Produit
+class ProduitList(generics.ListCreateAPIView):
+    queryset = Produit.objects.all()
+    serializer_class = ProduitSerializer
+
+class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Produit.objects.all()
+    serializer_class = ProduitSerializer
+
+class FamilyProduitList(generics.ListCreateAPIView):
+    serializer_class = ProduitSerializer
+    def get_queryset(self):
+        stockList = Stockage.objects.filter(refFamily=self.kwargs['pkF'])
+        listeIdStock = []
+        for stock in stockList :
+            print(stock.id)
+            listeIdStock.append(stock.id)
+            # listeProduit.append(Produit.objects.filter(refStockage=stock.id))
+        return Produit.objects.filter(refStockage__in=listeIdStock)
+
+# class FamilyProduitDetail(generics.RetrieveUpdateDestroyAPIView):
+#     serializer_class = ProduitSerializer
+#     def get_queryset(self):
+#         stockF = Stockage.objects.filter(refFamily=self.kwargs['pkF'])
+#         return Produit.objects.filter(refFamily=self.kwargs['pkF'],id=self.kwargs['pk'])

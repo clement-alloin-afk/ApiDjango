@@ -79,6 +79,9 @@ class Repas(models.Model):
     class Meta:
         unique_together = ['nom','refFamily']
 
+    def __str__(self):
+        return self.nom
+
 class Category(models.Model): 
     nom = models.CharField(max_length=30)
     dureConservation = models.CharField(max_length=30)
@@ -87,6 +90,9 @@ class Category(models.Model):
     class Meta:
         unique_together = ['nom','refFamily']
 
+    def __str__(self):
+        return self.nom
+
 class Stockage(models.Model): 
     nom = models.CharField(max_length=30)
     dureConservation = models.CharField(max_length=30)
@@ -94,3 +100,17 @@ class Stockage(models.Model):
 
     class Meta:
         unique_together = ['nom','refFamily']
+
+    def __str__(self):
+        return self.nom
+
+class Produit(models.Model):
+    nom = models.CharField(max_length=30)
+    quantity = models.IntegerField()
+    quantityMin = models.IntegerField(blank=True)
+    isQuantityMin = models.BooleanField(default=False)
+    description = models.TextField( blank=True)
+    refStockage = models.ForeignKey(Stockage, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nom

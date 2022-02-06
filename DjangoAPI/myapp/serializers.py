@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from myapp.models import Family, User, Repas, Category, Stockage
+from myapp.models import Family, Produit, User, Repas, Category, Stockage, Produit
 
 class FamilySerializer(serializers.ModelSerializer):
 
@@ -30,3 +30,8 @@ class StockageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Stockage
         fields = ['id','nom','dureConservation','refFamily']
+
+class ProduitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Produit
+        fields = ['id','nom','quantity','quantityMin','isQuantityMin','description','refStockage']
