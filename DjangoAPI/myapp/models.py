@@ -107,9 +107,9 @@ class Stockage(models.Model):
 class Produit(models.Model):
     nom = models.CharField(max_length=30)
     quantity = models.IntegerField()
-    quantityMin = models.IntegerField(blank=True)
+    quantityMin = models.IntegerField(null=True)
     isQuantityMin = models.BooleanField(default=False)
-    description = models.TextField( blank=True)
+    description = models.TextField( null=True)
     refStockage = models.ForeignKey(Stockage, on_delete=models.CASCADE)
 
     def __str__(self):

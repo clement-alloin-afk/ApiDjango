@@ -2,7 +2,7 @@ from django.urls import path, re_path
 from rest_framework.urlpatterns import format_suffix_patterns
 from .views import ( FamilyList,FamilyDetail,FamilyMembresList,FamilyRepasList,FamilyRepasDetail, UserList,UserDetail,
 RepasList,RepasDetail, CategoryList, CategoryDetail,StockageList, StockageDetail,
-FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail,ProduitList,ProduitDetail,
+FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail,StockageListProduit,ProduitList,ProduitDetail,
 FamilyProduitList )
 from . import views
 
@@ -43,6 +43,7 @@ urlpatterns = [
 
     path('Stockage/', StockageList.as_view()),
     path('Stockage/<pk>/', StockageDetail.as_view()),
+    path('Stockage/<pk>/Produit', StockageListProduit.as_view()),
 
     path('Produit/', ProduitList.as_view()),
     path('Produit/<pk>/', ProduitDetail.as_view()),

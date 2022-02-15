@@ -94,6 +94,11 @@ class FamilyStockageDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return Stockage.objects.filter(refFamily=self.kwargs['pkF'],id=self.kwargs['pk'])
 
+class StockageListProduit(generics.ListCreateAPIView):
+    serializer_class = ProduitSerializer
+    def get_queryset(self):
+        return Produit.objects.filter(refStockage=self.kwargs['pk'])
+
 #Produit
 class ProduitList(generics.ListCreateAPIView):
     queryset = Produit.objects.all()
