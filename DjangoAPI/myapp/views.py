@@ -7,6 +7,7 @@ from myapp.models import Family, User, Repas, Category, Stockage, Produit
 from myapp.serializers import FamilySerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer,ProduitSerializer
 from rest_framework import generics
 
+
 #Familles
 class FamilyList(generics.ListCreateAPIView):
     queryset = Family.objects.all()
