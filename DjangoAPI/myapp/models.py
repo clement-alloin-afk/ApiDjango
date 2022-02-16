@@ -109,7 +109,7 @@ class Produit(models.Model):
     quantity = models.IntegerField()
     quantityMin = models.IntegerField(null=True)
     isQuantityMin = models.BooleanField(default=False)
-    description = models.TextField( null=True)
+    description = models.TextField( null=True,blank=True)
     refStockage = models.ForeignKey(Stockage, on_delete=models.CASCADE)
 
     def __str__(self):
