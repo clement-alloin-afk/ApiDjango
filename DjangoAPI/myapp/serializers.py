@@ -1,5 +1,6 @@
+from dataclasses import field
 from rest_framework import serializers
-from myapp.models import Family, Produit, User, Repas, Category, Stockage, Produit
+from myapp.models import Family, Produit, User, Repas, Category, Stockage, Produit, Liste, Tache
 
 class FamilySerializer(serializers.ModelSerializer):
 
@@ -35,3 +36,13 @@ class ProduitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produit
         fields = ['id','nom','quantity','quantityMin','isQuantityMin','description','refStockage']
+
+class ListeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Liste
+        fields = ['id','nom','category','refFamily']
+
+class TacheSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tache
+        fields = ['id','nom','isCheck','refListe']

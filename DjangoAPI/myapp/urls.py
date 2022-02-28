@@ -1,9 +1,15 @@
 from django.urls import path, re_path
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import ( FamilyList,FamilyDetail,FamilyMembresList,FamilyRepasList,FamilyRepasDetail, UserList,UserDetail,
-RepasList,RepasDetail, CategoryList, CategoryDetail,StockageList, StockageDetail,
-FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail,StockageListProduit,ProduitList,ProduitDetail,
-FamilyProduitList )
+from .views import ( FamilyList,FamilyDetail,FamilyMembresList,FamilyRepasList,FamilyRepasDetail,
+FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail,FamilyProduitList,
+UserList,UserDetail,
+RepasList,RepasDetail, 
+CategoryList, CategoryDetail,
+StockageList, StockageDetail,StockageListProduit,
+ProduitList,ProduitDetail,
+ListeList,ListeDetail,
+TacheList,TacheDetail
+ )
 from . import views
 
 from drf_yasg.views import get_schema_view
@@ -47,6 +53,12 @@ urlpatterns = [
 
     path('Produit/', ProduitList.as_view()),
     path('Produit/<pk>/', ProduitDetail.as_view()),
+
+    path('Liste/', ListeList.as_view()),
+    path('Liste/<pk>/', ListeDetail.as_view()),
+
+    path('Tache/', TacheList.as_view()),
+    path('Tache/<pk>/', TacheDetail.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

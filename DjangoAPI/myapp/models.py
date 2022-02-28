@@ -114,3 +114,26 @@ class Produit(models.Model):
 
     def __str__(self):
         return self.nom
+
+CATEGORY_CHOICE = (
+    (1, ("Tâche")),
+    (2, ("Course")),
+)
+
+class Liste(models.Model):
+    nom = models.CharField(max_length=30)
+    category = models.CharField(max_length=30, choices=CATEGORY_CHOICE)
+    refFamily = models.ForeignKey(Family, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nom
+        
+
+
+class Tache(models.Model):
+    nom = models.CharField(max_length=30)
+    isCheck = models.BooleanField(default=False)
+    refListe = models.ForeignKey(Liste, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nom

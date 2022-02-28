@@ -4,8 +4,9 @@ from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from myapp.models import Family, User, Repas, Category, Stockage, Produit
-from myapp.serializers import FamilySerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer,ProduitSerializer
+from myapp.models import Family, User, Repas, Category, Stockage, Produit, Liste, Tache
+from myapp.serializers import ( FamilySerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer,ProduitSerializer,
+ListeSerializer,TacheSerializer )
 from rest_framework import generics
 
 
@@ -18,7 +19,6 @@ class FamilyList(generics.ListCreateAPIView):
 class FamilyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Family.objects.all()
     serializer_class = FamilySerializer
-    permission_classes = [IsAuthenticated]
 
 class FamilyMembresList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
@@ -146,3 +146,21 @@ class FamilyProduitList(generics.ListCreateAPIView):
 #     def get_queryset(self):
 #         stockF = Stockage.objects.filter(refFamily=self.kwargs['pkF'])
 #         return Produit.objects.filter(refFamily=self.kwargs['pkF'],id=self.kwargs['pk'])
+
+#Liste
+class ListeList(generics.ListCreateAPIView):
+    queryset = Liste.objects.all()
+    serializer_class = ListeSerializer
+
+class ListeDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Liste.objects.all()
+    serializer_class = ListeSerializer
+
+#Tache
+class TacheList(generics.ListCreateAPIView):
+    queryset = Tache.objects.all()
+    serializer_class = TacheSerializer
+
+class TacheDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tache.objects.all()
+    serializer_class = TacheSerializer
