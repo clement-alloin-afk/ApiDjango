@@ -123,7 +123,7 @@ SIMPLE_JWT = {
 
 JWT_AUTH = {
     # how long the original token is valid for
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=300),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
 
     # allow refreshing of tokens
     'JWT_ALLOW_REFRESH': True,
