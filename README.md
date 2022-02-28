@@ -1,6 +1,7 @@
 ## Description
 
 Api utilisant DnajgoRest Framework.
+
 Backend de TFE.
 
 ## Installation
@@ -13,4 +14,4 @@ python manage.py runserver
 
 ## Author
 
-Alloin Clément
+- Alloin Clément
