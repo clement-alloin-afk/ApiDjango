@@ -1,14 +1,14 @@
 from django.urls import path, re_path
 from rest_framework.urlpatterns import format_suffix_patterns
 from .views import ( FamilyList,FamilyDetail,FamilyMembresList,FamilyRepasList,FamilyRepasDetail,
-FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail,FamilyProduitList,
+FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail,FamilyProduitList,FamilyListeList,
 UserList,UserDetail,
 RepasList,RepasDetail, 
 CategoryList, CategoryDetail,
 StockageList, StockageDetail,StockageListProduit,
 ProduitList,ProduitDetail,
 ListeList,ListeDetail,
-TacheList,TacheDetail
+TacheList,TacheDetail,ListeTacheList
  )
 from . import views
 
@@ -36,10 +36,11 @@ urlpatterns = [
     path('Family/<int:pkF>/Stockage/', FamilyStockageList.as_view()),
     path('Family/<int:pkF>/Stockage/<pk>', FamilyStockageDetail.as_view()),
     path('Family/<int:pkF>/Produit/', FamilyProduitList.as_view()),
+    path('Family/<int:pkF>/Liste/', FamilyListeList.as_view()),
     # path('Family/<int:pkF>/Produit/<pk>', FamilyProduitDetail.as_view()),
 
     path('User/', UserList.as_view()),
-    path('User/<pk>', UserDetail.as_view()), 
+    path('User/<pk>', UserDetail.as_view()),
 
     path('Repas/', RepasList.as_view()),
     path('Repas/<pk>/', RepasDetail.as_view()),
@@ -56,6 +57,7 @@ urlpatterns = [
 
     path('Liste/', ListeList.as_view()),
     path('Liste/<pk>/', ListeDetail.as_view()),
+    path('Liste/<pk>/Tache', ListeTacheList.as_view()),
 
     path('Tache/', TacheList.as_view()),
     path('Tache/<pk>/', TacheDetail.as_view()),

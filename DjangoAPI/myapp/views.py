@@ -156,6 +156,11 @@ class ListeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Liste.objects.all()
     serializer_class = ListeSerializer
 
+class FamilyListeList(generics.ListCreateAPIView):
+    serializer_class = ListeSerializer
+    def get_queryset(self):
+        return Liste.objects.filter(refFamily=self.kwargs['pkF'])
+
 #Tache
 class TacheList(generics.ListCreateAPIView):
     queryset = Tache.objects.all()
@@ -164,3 +169,9 @@ class TacheList(generics.ListCreateAPIView):
 class TacheDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tache.objects.all()
     serializer_class = TacheSerializer
+
+class ListeTacheList(generics.ListCreateAPIView):
+    serializer_class = TacheSerializer
+    
+    def get_queryset(self):
+        return Tache.objects.filter(refListe=self.kwargs['pk'])

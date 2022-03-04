@@ -116,8 +116,8 @@ class Produit(models.Model):
         return self.nom
 
 CATEGORY_CHOICE = (
-    (1, ("Tâche")),
-    (2, ("Course")),
+    (("Tâche"),("Tâche")),
+    (("Course"),("Course")),
 )
 
 class Liste(models.Model):
