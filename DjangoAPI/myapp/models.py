@@ -5,6 +5,11 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 import random
 import string
 
+CATEGORY_CHOICE = (
+    (("Tâche"),("Tâche")),
+    (("Course"),("Course")),
+)
+
 def get_random_code():
     letters = string.ascii_uppercase + string.digits
     code = ''.join(random.choice(letters) for i in range(10))
@@ -32,6 +37,7 @@ def init_new_family(instance, created, raw, **kwargs):
         Category.objects.create(nom="Viande surgelée",dureConservation="6 mois", refFamily=instance)
         Stockage.objects.create(nom="Frigo",dureConservation="1 semaine", refFamily=instance)
 
+# User
 class UserManager(BaseUserManager):
     def create_user(self,pseudonyme,email,password,pseudonymePerso,refFamily):
         email = self.normalize_email(email)
@@ -72,6 +78,7 @@ class User(AbstractBaseUser):
     def is_staff(self):
         return self.is_admin
 
+# Repas
 class Repas(models.Model): 
     nom = models.CharField(max_length=30)
     refFamily = models.ForeignKey(Family, on_delete=models.CASCADE)
@@ -82,6 +89,7 @@ class Repas(models.Model):
     def __str__(self):
         return self.nom
 
+# Catégorie
 class Category(models.Model): 
     nom = models.CharField(max_length=30)
     dureConservation = models.CharField(max_length=30)
@@ -93,6 +101,7 @@ class Category(models.Model):
     def __str__(self):
         return self.nom
 
+# Stockage
 class Stockage(models.Model): 
     nom = models.CharField(max_length=30)
     dureConservation = models.CharField(max_length=30)
@@ -104,6 +113,7 @@ class Stockage(models.Model):
     def __str__(self):
         return self.nom
 
+# Produit
 class Produit(models.Model):
     nom = models.CharField(max_length=30)
     quantity = models.IntegerField()
@@ -115,11 +125,17 @@ class Produit(models.Model):
     def __str__(self):
         return self.nom
 
-CATEGORY_CHOICE = (
-    (("Tâche"),("Tâche")),
-    (("Course"),("Course")),
-)
+# Peremption des produits
+class PeremptionProduit(models.Model):
+    datePeremption = models.DateField()
+    notifPeremption = models.IntegerField()
+    quantity = models.IntegerField()
+    refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.datePeremption
+
+# Liste
 class Liste(models.Model):
     nom = models.CharField(max_length=30)
     category = models.CharField(max_length=30, choices=CATEGORY_CHOICE)
@@ -127,9 +143,32 @@ class Liste(models.Model):
 
     def __str__(self):
         return self.nom
+
+# Lien entre Produit et Liste
+class LigneListe(models.Model):
+    refListe = models.ForeignKey(Liste, on_delete=models.CASCADE)
+    refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE)
+    mesure = models.CharField(max_length=30)
+    quantity = models.IntegerField()
+    isCheck = models.BooleanField(default=False)
+    autoAdd = models.BooleanField(default=False)
+    autoAddQuantity = models.IntegerField()
+
+    def __str__(self):
+        return self.quantity
+
+# Lien entre Produit et Repas
+class LigneRepas(models.Model):
+    refRepas = models.ForeignKey(Repas, on_delete=models.CASCADE)
+    refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE)
+    mesure = models.CharField(max_length=30)
+    quantity = models.IntegerField()
+
+    def __str__(self):
+        return self.quantity
+
         
-
-
+# Tache
 class Tache(models.Model):
     nom = models.CharField(max_length=30)
     isCheck = models.BooleanField(default=False)
