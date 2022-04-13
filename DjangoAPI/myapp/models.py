@@ -15,6 +15,7 @@ def get_random_code():
     code = ''.join(random.choice(letters) for i in range(10))
     return code
 
+# Famille
 class Family(models.Model):
     nom = models.TextField()
     code = models.TextField(null=True)
@@ -143,6 +144,15 @@ class Liste(models.Model):
 
     def __str__(self):
         return self.nom
+        
+# Tache
+class Tache(models.Model):
+    nom = models.CharField(max_length=30)
+    isCheck = models.BooleanField(default=False)
+    refListe = models.ForeignKey(Liste, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nom
 
 # Lien entre Produit et Liste
 class LigneListe(models.Model):
@@ -166,13 +176,3 @@ class LigneRepas(models.Model):
 
     def __str__(self):
         return self.quantity
-
-        
-# Tache
-class Tache(models.Model):
-    nom = models.CharField(max_length=30)
-    isCheck = models.BooleanField(default=False)
-    refListe = models.ForeignKey(Liste, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.nom
