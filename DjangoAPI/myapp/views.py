@@ -4,9 +4,9 @@ from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from myapp.models import Family, User, Repas, Category, Stockage, Produit, Liste, Tache
+from myapp.models import Family, User, Repas, Category, Stockage, Produit, Liste, Tache, LigneRepas, LigneListe
 from myapp.serializers import ( FamilySerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer,ProduitSerializer,
-ListeSerializer,TacheSerializer )
+ListeSerializer,TacheSerializer, LigneRepasSerializer, LigneListeSerializer )
 from rest_framework import generics
 
 
@@ -175,3 +175,25 @@ class ListeTacheList(generics.ListCreateAPIView):
     
     def get_queryset(self):
         return Tache.objects.filter(refListe=self.kwargs['pk'])
+
+#LigneListe
+class LigneListeList(generics.ListCreateAPIView):
+    queryset = LigneListe.objects.all()
+    serializer_class = LigneListeSerializer
+
+class LigneListeDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = LigneListeSerializer
+    
+    def get_queryset(self):
+        return LigneListe.objects.filter(refListe=self.kwargs['pk'])
+
+#LigneRepas
+class LigneRepasList(generics.ListCreateAPIView):
+    queryset = LigneRepas.objects.all()
+    serializer_class = LigneRepasSerializer
+
+class LigneRepasDetail(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = LigneRepasSerializer
+    
+    def get_queryset(self):
+        return LigneRepas.objects.filter(refRepas=self.kwargs['pk'])

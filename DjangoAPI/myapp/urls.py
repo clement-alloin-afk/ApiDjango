@@ -8,7 +8,9 @@ CategoryList, CategoryDetail,
 StockageList, StockageDetail,StockageListProduit,
 ProduitList,ProduitDetail,
 ListeList,ListeDetail,
-TacheList,TacheDetail,ListeTacheList
+TacheList,TacheDetail,ListeTacheList,
+LigneListeList,LigneRepasList,
+LigneListeDetail,LigneRepasDetail
  )
 from . import views
 
@@ -50,4 +52,10 @@ urlpatterns = [
 
    path('Tache/', TacheList.as_view()),
    path('Tache/<pk>/', TacheDetail.as_view()),
+
+   path('LigneRepas/', LigneRepasList.as_view()),
+   path('LigneRepas/<pk>/', LigneRepasDetail.as_view()),
+
+   path('LigneListe/', LigneListeList.as_view()),
+   path('LigneListe/<pk>/', LigneListeDetail.as_view()),
 ]
