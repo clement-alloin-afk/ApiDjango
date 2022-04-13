@@ -51,5 +51,3 @@ urlpatterns = [
    path('Tache/', TacheList.as_view()),
    path('Tache/<pk>/', TacheDetail.as_view()),
 ]
-
-urlpatterns = format_suffix_patterns(urlpatterns)
