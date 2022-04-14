@@ -187,13 +187,22 @@ class LigneListeDetail(generics.RetrieveUpdateDestroyAPIView):
     def get_queryset(self):
         return LigneListe.objects.filter(refListe=self.kwargs['pk'])
 
+class LigneListeId(generics.RetrieveUpdateDestroyAPIView):
+    queryset = LigneListe.objects.all()
+    serializer_class = LigneListeSerializer
+
 #LigneRepas
 class LigneRepasList(generics.ListCreateAPIView):
     queryset = LigneRepas.objects.all()
     serializer_class = LigneRepasSerializer
 
-class LigneRepasDetail(generics.RetrieveUpdateDestroyAPIView):
+class LigneRepasId(generics.ListCreateAPIView):
     serializer_class = LigneRepasSerializer
     
     def get_queryset(self):
+        print(self.kwargs['pk'])
         return LigneRepas.objects.filter(refRepas=self.kwargs['pk'])
+
+class LigneRepasDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = LigneRepas.objects.all()
+    serializer_class = LigneRepasSerializer

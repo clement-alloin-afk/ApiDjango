@@ -1,0 +1,1348 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2022-01-31T14:25:49.213Z",
+    "user": "pepito",
+    "content_type": 8,
+    "object_id": "13",
+    "object_repr": "5",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2022-01-31T14:25:49.219Z",
+    "user": "pepito",
+    "content_type": 8,
+    "object_id": "12",
+    "object_repr": "4",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2022-01-31T14:25:49.224Z",
+    "user": "pepito",
+    "content_type": 8,
+    "object_id": "11",
+    "object_repr": "zd",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2022-01-31T14:25:49.229Z",
+    "user": "pepito",
+    "content_type": 8,
+    "object_id": "10",
+    "object_repr": "New 3",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2022-01-31T14:25:49.234Z",
+    "user": "pepito",
+    "content_type": 8,
+    "object_id": "9",
+    "object_repr": "New 2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2022-01-31T14:25:49.238Z",
+    "user": "pepito",
+    "content_type": 8,
+    "object_id": "8",
+    "object_repr": "New",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2022-01-31T14:25:49.242Z",
+    "user": "pepito",
+    "content_type": 8,
+    "object_id": "7",
+    "object_repr": "2",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2022-01-31T14:25:49.247Z",
+    "user": "pepito",
+    "content_type": 8,
+    "object_id": "6",
+    "object_repr": "Test",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 4,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 4,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 4,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 4,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 5,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 5,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 5,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 5,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add family",
+    "content_type": 6,
+    "codename": "add_family"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change family",
+    "content_type": 6,
+    "codename": "change_family"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete family",
+    "content_type": 6,
+    "codename": "delete_family"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view family",
+    "content_type": 6,
+    "codename": "view_family"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 7,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 7,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 7,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 7,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add stockage",
+    "content_type": 8,
+    "codename": "add_stockage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change stockage",
+    "content_type": 8,
+    "codename": "change_stockage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete stockage",
+    "content_type": 8,
+    "codename": "delete_stockage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view stockage",
+    "content_type": 8,
+    "codename": "view_stockage"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add repas",
+    "content_type": 9,
+    "codename": "add_repas"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change repas",
+    "content_type": 9,
+    "codename": "change_repas"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete repas",
+    "content_type": 9,
+    "codename": "delete_repas"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view repas",
+    "content_type": 9,
+    "codename": "view_repas"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add category",
+    "content_type": 10,
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change category",
+    "content_type": 10,
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete category",
+    "content_type": 10,
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view category",
+    "content_type": 10,
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add produit",
+    "content_type": 11,
+    "codename": "add_produit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change produit",
+    "content_type": 11,
+    "codename": "change_produit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete produit",
+    "content_type": 11,
+    "codename": "delete_produit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view produit",
+    "content_type": 11,
+    "codename": "view_produit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add liste",
+    "content_type": 12,
+    "codename": "add_liste"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change liste",
+    "content_type": 12,
+    "codename": "change_liste"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete liste",
+    "content_type": 12,
+    "codename": "delete_liste"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view liste",
+    "content_type": 12,
+    "codename": "view_liste"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 49,
+  "fields": {
+    "name": "Can add tache",
+    "content_type": 13,
+    "codename": "add_tache"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 50,
+  "fields": {
+    "name": "Can change tache",
+    "content_type": 13,
+    "codename": "change_tache"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 51,
+  "fields": {
+    "name": "Can delete tache",
+    "content_type": 13,
+    "codename": "delete_tache"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 52,
+  "fields": {
+    "name": "Can view tache",
+    "content_type": 13,
+    "codename": "view_tache"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 53,
+  "fields": {
+    "name": "Can add peremption produit",
+    "content_type": 14,
+    "codename": "add_peremptionproduit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 54,
+  "fields": {
+    "name": "Can change peremption produit",
+    "content_type": 14,
+    "codename": "change_peremptionproduit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 55,
+  "fields": {
+    "name": "Can delete peremption produit",
+    "content_type": 14,
+    "codename": "delete_peremptionproduit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 56,
+  "fields": {
+    "name": "Can view peremption produit",
+    "content_type": 14,
+    "codename": "view_peremptionproduit"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 57,
+  "fields": {
+    "name": "Can add ligne repas",
+    "content_type": 15,
+    "codename": "add_lignerepas"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 58,
+  "fields": {
+    "name": "Can change ligne repas",
+    "content_type": 15,
+    "codename": "change_lignerepas"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 59,
+  "fields": {
+    "name": "Can delete ligne repas",
+    "content_type": 15,
+    "codename": "delete_lignerepas"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 60,
+  "fields": {
+    "name": "Can view ligne repas",
+    "content_type": 15,
+    "codename": "view_lignerepas"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 61,
+  "fields": {
+    "name": "Can add ligne liste",
+    "content_type": 16,
+    "codename": "add_ligneliste"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 62,
+  "fields": {
+    "name": "Can change ligne liste",
+    "content_type": 16,
+    "codename": "change_ligneliste"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 63,
+  "fields": {
+    "name": "Can delete ligne liste",
+    "content_type": 16,
+    "codename": "delete_ligneliste"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 64,
+  "fields": {
+    "name": "Can view ligne liste",
+    "content_type": 16,
+    "codename": "view_ligneliste"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "myapp",
+    "model": "family"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "myapp",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "myapp",
+    "model": "stockage"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "myapp",
+    "model": "repas"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "myapp",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "myapp",
+    "model": "produit"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "myapp",
+    "model": "liste"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "myapp",
+    "model": "tache"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "myapp",
+    "model": "peremptionproduit"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 15,
+  "fields": {
+    "app_label": "myapp",
+    "model": "lignerepas"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 16,
+  "fields": {
+    "app_label": "myapp",
+    "model": "ligneliste"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "clcabgocncdoh9jz850mg8fvgd2xx68c",
+  "fields": {
+    "session_data": ".eJxVzEEOwiAQheG7sDakQKHFpfueoRlmBkFNaQpdGe9umnSh6-9_7y1m2Fua98rbnElcxcprbkVcfiEAPnk5lB6w3IvEsrQtB3kk8tQqp0L8up3t30GCmo710LvIOnLvAqO2HZrQK8VsRz8641GDi9aTiq4zCDBEYkdmZG9IgfLi8wWKyDrS:1nf1Tq:T5QuQvTBju4XC_bsMaHHj5B7_-cO5AAzNATXgfoRHRo",
+    "expire_date": "2022-04-28T15:33:58.897Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "synjlnzimghp1h4pxhwuxc0folibcvto",
+  "fields": {
+    "session_data": ".eJxVzEEOwiAQheG7sDakQKHFpfueoRlmBkFNaQpdGe9umnSh6-9_7y1m2Fua98rbnElcxcprbkVcfiEAPnk5lB6w3IvEsrQtB3kk8tQqp0L8up3t30GCmo710LvIOnLvAqO2HZrQK8VsRz8641GDi9aTiq4zCDBEYkdmZG9IgfLi8wWKyDrS:1nEXb2:FgtjhWcUQmOuA9A-GhBIXNQ03sDOxeOTsBEEgOoS6nA",
+    "expire_date": "2022-02-14T14:23:56.888Z"
+  }
+},
+{
+  "model": "myapp.family",
+  "pk": 1,
+  "fields": {
+    "nom": "Ionic Family",
+    "code": "U6WRR6H5W3"
+  }
+},
+{
+  "model": "myapp.family",
+  "pk": 2,
+  "fields": {
+    "nom": "Famille Alloin",
+    "code": "52YQY00VC6"
+  }
+},
+{
+  "model": "myapp.family",
+  "pk": 3,
+  "fields": {
+    "nom": "tsts",
+    "code": "GWRYUGDVZC"
+  }
+},
+{
+  "model": "myapp.user",
+  "pk": "Ionic",
+  "fields": {
+    "last_login": null,
+    "pseudonymePerso": "Ionic",
+    "password": "pbkdf2_sha256$320000$rCb81f9ifsH0VrRY7S9jMa$Noe/UGelu9682Ws9D6pzh+UtD1BNZN0qE3fVMPmHPXU=",
+    "email": "ionic@gmail.com",
+    "refFamily": 1,
+    "is_admin": false
+  }
+},
+{
+  "model": "myapp.user",
+  "pk": "New Ionic",
+  "fields": {
+    "last_login": null,
+    "pseudonymePerso": "New Ionic",
+    "password": "pbkdf2_sha256$320000$4OaaxePsIda9DLjI3Nluke$CMZB5JOML0FtAeCTJ4XgJpbPlgLfPaOnnN2re+sfSac=",
+    "email": "newionic@gmail.com",
+    "refFamily": 1,
+    "is_admin": false
+  }
+},
+{
+  "model": "myapp.user",
+  "pk": "as",
+  "fields": {
+    "last_login": null,
+    "pseudonymePerso": "as",
+    "password": "pbkdf2_sha256$320000$jHX9dGL8puDTIbIbNHdwak$IiOrrv0NO1pjK/tOeriKZzqX91aOEGC1ZhMqfwh+Rx8=",
+    "email": "as@gmail.com",
+    "refFamily": 3,
+    "is_admin": false
+  }
+},
+{
+  "model": "myapp.user",
+  "pk": "clement00",
+  "fields": {
+    "last_login": null,
+    "pseudonymePerso": "clement00",
+    "password": "pbkdf2_sha256$320000$HAQnWapYiafML7oQooQogv$8yhASdd6oS3OOuvV/DqFm1WUvYQfyb2t81U3x4PLg7g=",
+    "email": "a@gmail.com",
+    "refFamily": null,
+    "is_admin": false
+  }
+},
+{
+  "model": "myapp.user",
+  "pk": "pepito",
+  "fields": {
+    "last_login": "2022-04-14T15:33:58.892Z",
+    "pseudonymePerso": "pepito",
+    "password": "pbkdf2_sha256$320000$ONaCefYaVJ0f7Bpxq6F9Sv$5hLeeoJ/ELIvPujHYnKIiglEvRpg0A7h6sWRN2rV9io=",
+    "email": "p@gmail.com",
+    "refFamily": null,
+    "is_admin": true
+  }
+},
+{
+  "model": "myapp.repas",
+  "pk": 1,
+  "fields": {
+    "nom": "Pâtes Carbonara",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.repas",
+  "pk": 2,
+  "fields": {
+    "nom": "Pizza maison",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.repas",
+  "pk": 3,
+  "fields": {
+    "nom": "Hamburger poulet",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 1,
+  "fields": {
+    "nom": "Crème",
+    "dureConservation": "2 semaines",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 2,
+  "fields": {
+    "nom": "Charcuterie",
+    "dureConservation": "2 semaines",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 3,
+  "fields": {
+    "nom": "Viande",
+    "dureConservation": "2 semaines",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 4,
+  "fields": {
+    "nom": "Viande surgelée",
+    "dureConservation": "6 mois",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 5,
+  "fields": {
+    "nom": "Crème",
+    "dureConservation": "2 semaines",
+    "refFamily": 2
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 6,
+  "fields": {
+    "nom": "Charcuterie",
+    "dureConservation": "2 semaines",
+    "refFamily": 2
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 7,
+  "fields": {
+    "nom": "Viande",
+    "dureConservation": "2 semaines",
+    "refFamily": 2
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 8,
+  "fields": {
+    "nom": "Viande surgelée",
+    "dureConservation": "6 mois",
+    "refFamily": 2
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 9,
+  "fields": {
+    "nom": "Crème",
+    "dureConservation": "2 semaines",
+    "refFamily": 3
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 10,
+  "fields": {
+    "nom": "Charcuterie",
+    "dureConservation": "2 semaines",
+    "refFamily": 3
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 11,
+  "fields": {
+    "nom": "Viande",
+    "dureConservation": "2 semaines",
+    "refFamily": 3
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 12,
+  "fields": {
+    "nom": "Viande surgelée",
+    "dureConservation": "6 mois",
+    "refFamily": 3
+  }
+},
+{
+  "model": "myapp.category",
+  "pk": 14,
+  "fields": {
+    "nom": "Test",
+    "dureConservation": "2 jours",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 1,
+  "fields": {
+    "nom": "Frigo",
+    "dureConservation": "1 semaine",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 2,
+  "fields": {
+    "nom": "Frigo Du Haut",
+    "dureConservation": "1 semaine",
+    "refFamily": 2
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 3,
+  "fields": {
+    "nom": "Congélateur",
+    "dureConservation": "6 mois",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 4,
+  "fields": {
+    "nom": "Frigo Cave 1",
+    "dureConservation": "1 mois",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 5,
+  "fields": {
+    "nom": "Frigo Cave 2",
+    "dureConservation": "1 mois",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 14,
+  "fields": {
+    "nom": "Frigo",
+    "dureConservation": "1 semaine",
+    "refFamily": 3
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 15,
+  "fields": {
+    "nom": "blabla",
+    "dureConservation": "jasbjas",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 16,
+  "fields": {
+    "nom": "Test",
+    "dureConservation": "test",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 17,
+  "fields": {
+    "nom": "test",
+    "dureConservation": "test",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.stockage",
+  "pk": 18,
+  "fields": {
+    "nom": "allo",
+    "dureConservation": "s",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 1,
+  "fields": {
+    "nom": "Jambon de poulet",
+    "quantity": 6,
+    "quantityMin": 1,
+    "isQuantityMin": true,
+    "description": "",
+    "refStockage": 1
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 2,
+  "fields": {
+    "nom": "Jambon de dinde",
+    "quantity": 2,
+    "quantityMin": 1,
+    "isQuantityMin": true,
+    "description": "",
+    "refStockage": 1
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 3,
+  "fields": {
+    "nom": "Aioli",
+    "quantity": 2,
+    "quantityMin": 0,
+    "isQuantityMin": false,
+    "description": "",
+    "refStockage": 1
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 4,
+  "fields": {
+    "nom": "Salami",
+    "quantity": 1,
+    "quantityMin": 0,
+    "isQuantityMin": false,
+    "description": "",
+    "refStockage": 2
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 5,
+  "fields": {
+    "nom": "Nems",
+    "quantity": 2,
+    "quantityMin": 1,
+    "isQuantityMin": true,
+    "description": "test",
+    "refStockage": 1
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 6,
+  "fields": {
+    "nom": "test",
+    "quantity": 1,
+    "quantityMin": 1,
+    "isQuantityMin": true,
+    "description": "a",
+    "refStockage": 1
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 7,
+  "fields": {
+    "nom": "test",
+    "quantity": 1,
+    "quantityMin": 1,
+    "isQuantityMin": true,
+    "description": "1",
+    "refStockage": 1
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 8,
+  "fields": {
+    "nom": "Salami",
+    "quantity": 1,
+    "quantityMin": null,
+    "isQuantityMin": false,
+    "description": null,
+    "refStockage": 1
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 9,
+  "fields": {
+    "nom": "Fish Stick",
+    "quantity": 6,
+    "quantityMin": 2,
+    "isQuantityMin": true,
+    "description": null,
+    "refStockage": 3
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 10,
+  "fields": {
+    "nom": "Produit",
+    "quantity": 4,
+    "quantityMin": null,
+    "isQuantityMin": false,
+    "description": null,
+    "refStockage": 1
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 11,
+  "fields": {
+    "nom": "adad",
+    "quantity": 2,
+    "quantityMin": 1,
+    "isQuantityMin": true,
+    "description": "",
+    "refStockage": 1
+  }
+},
+{
+  "model": "myapp.liste",
+  "pk": 1,
+  "fields": {
+    "nom": "Une liste de Tache",
+    "category": "Tache",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.liste",
+  "pk": 9,
+  "fields": {
+    "nom": "Colruyt",
+    "category": "Course",
+    "refFamily": 1
+  }
+},
+{
+  "model": "myapp.tache",
+  "pk": 1,
+  "fields": {
+    "nom": "Vider lave vaiselle",
+    "isCheck": false,
+    "refListe": 1
+  }
+},
+{
+  "model": "myapp.tache",
+  "pk": 2,
+  "fields": {
+    "nom": "Vider lave vaiselle",
+    "isCheck": true,
+    "refListe": 1
+  }
+},
+{
+  "model": "myapp.tache",
+  "pk": 3,
+  "fields": {
+    "nom": "Changer lit",
+    "isCheck": false,
+    "refListe": 1
+  }
+},
+{
+  "model": "myapp.lignerepas",
+  "pk": 1,
+  "fields": {
+    "refRepas": 2,
+    "refProduit": 4,
+    "mesure": "Paquet",
+    "quantity": 2
+  }
+},
+{
+  "model": "myapp.lignerepas",
+  "pk": 2,
+  "fields": {
+    "refRepas": 3,
+    "refProduit": 3,
+    "mesure": "boite",
+    "quantity": 1
+  }
+},
+{
+  "model": "myapp.lignerepas",
+  "pk": 3,
+  "fields": {
+    "refRepas": 2,
+    "refProduit": 5,
+    "mesure": "g",
+    "quantity": 10
+  }
+}
+]
