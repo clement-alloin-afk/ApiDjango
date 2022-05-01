@@ -120,8 +120,10 @@ class Produit(models.Model):
     quantity = models.IntegerField()
     quantityMin = models.IntegerField(null=True)
     isQuantityMin = models.BooleanField(default=False)
+    quantityAutoAdd = models.IntegerField(default=0)
     description = models.TextField( null=True,blank=True)
     refStockage = models.ForeignKey(Stockage, on_delete=models.CASCADE)
+    refCategory = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nom
@@ -162,7 +164,6 @@ class LigneListe(models.Model):
     quantity = models.IntegerField()
     isCheck = models.BooleanField(default=False)
     autoAdd = models.BooleanField(default=False)
-    autoAddQuantity = models.IntegerField()
 
     def __str__(self):
         return self.quantity

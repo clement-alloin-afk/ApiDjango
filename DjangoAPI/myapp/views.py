@@ -122,7 +122,6 @@ class StockageListProduit(generics.ListCreateAPIView):
 class ProduitList(generics.ListCreateAPIView):
     queryset = Produit.objects.all()
     serializer_class = ProduitSerializer
-    permission_classes = [IsAuthenticated]
 
 class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Produit.objects.all()
@@ -181,13 +180,13 @@ class LigneListeList(generics.ListCreateAPIView):
     queryset = LigneListe.objects.all()
     serializer_class = LigneListeSerializer
 
-class LigneListeDetail(generics.RetrieveUpdateDestroyAPIView):
+class LigneListeId(generics.ListCreateAPIView):
     serializer_class = LigneListeSerializer
     
     def get_queryset(self):
         return LigneListe.objects.filter(refListe=self.kwargs['pk'])
 
-class LigneListeId(generics.RetrieveUpdateDestroyAPIView):
+class LigneListeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = LigneListe.objects.all()
     serializer_class = LigneListeSerializer
 

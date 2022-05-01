@@ -52,7 +52,7 @@ class StockageSerializer(serializers.ModelSerializer):
 class ProduitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produit
-        fields = ['id','nom','quantity','quantityMin','isQuantityMin','description','refStockage']
+        fields = ['id','nom','quantity','quantityMin','isQuantityMin','quantityAutoAdd','description','refStockage','refCategory']
 
 # Peremption des produits
 class PeremptionProduitSerializer(serializers.ModelSerializer):
@@ -77,7 +77,7 @@ class TacheSerializer(serializers.ModelSerializer):
 class LigneListeSerializer(serializers.ModelSerializer):
     class Meta:
         model = LigneListe
-        fields = ['id','mesure','quantity','isCheck','autoAdd','autoAddQuantity','refListe','refProduit']
+        fields = ['id','mesure','quantity','isCheck','autoAdd','refListe','refProduit']
 
 
 # Lien entre Produit et Repas

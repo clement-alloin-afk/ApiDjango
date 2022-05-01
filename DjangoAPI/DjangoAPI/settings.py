@@ -1,10 +1,8 @@
-import datetime
 from pathlib import Path
 from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -16,7 +14,6 @@ SECRET_KEY = 'django-insecure-=tceak632@+^hh+8^0kmtsqi@v!tn%80)cx%)z0@h4_yth4uum
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -49,7 +46,6 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:8100",
 )
 
-
 ROOT_URLCONF = 'DjangoAPI.urls'
 
 TEMPLATES = [
@@ -70,7 +66,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DjangoAPI.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -80,7 +75,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -99,7 +93,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
