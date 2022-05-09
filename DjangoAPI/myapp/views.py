@@ -135,7 +135,6 @@ class FamilyProduitList(generics.ListCreateAPIView):
         stockList = Stockage.objects.filter(refFamily=self.kwargs['pkF'])
         listeIdStock = []
         for stock in stockList :
-            print(stock.id)
             listeIdStock.append(stock.id)
             # listeProduit.append(Produit.objects.filter(refStockage=stock.id))
         return Produit.objects.filter(refStockage__in=listeIdStock)
@@ -180,6 +179,21 @@ class LigneListeList(generics.ListCreateAPIView):
     queryset = LigneListe.objects.all()
     serializer_class = LigneListeSerializer
 
+    def perform_create(self, serializer):
+        if (serializer.validated_data.get('refProduit') == None) :
+            createdProduit = Produit.objects.create(
+                nom=serializer.validated_data.get('nomProdOptional'),
+                quantity= 0,
+                quantityMin= 0,
+                isQuantityMin= False,
+                quantityAutoAdd= 0,
+                description= "",
+            )
+            print(createdProduit.id)
+            serializer.validated_data["refProduit"] = createdProduit
+            
+        serializer.save()
+
 class LigneListeId(generics.ListCreateAPIView):
     serializer_class = LigneListeSerializer
     
@@ -199,7 +213,6 @@ class LigneRepasId(generics.ListCreateAPIView):
     serializer_class = LigneRepasSerializer
     
     def get_queryset(self):
-        print(self.kwargs['pk'])
         return LigneRepas.objects.filter(refRepas=self.kwargs['pk'])
 
 class LigneRepasDetail(generics.RetrieveUpdateDestroyAPIView):

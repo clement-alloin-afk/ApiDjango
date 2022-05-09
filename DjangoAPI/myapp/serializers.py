@@ -75,9 +75,12 @@ class TacheSerializer(serializers.ModelSerializer):
 
 # Lien entre Produit et Liste
 class LigneListeSerializer(serializers.ModelSerializer):
+    refProduit = serializers.PrimaryKeyRelatedField(allow_null=True, queryset=Produit.objects.all())
+    nomProdOptional = serializers.CharField(required=False)
+    print(Produit.objects.all())
     class Meta:
         model = LigneListe
-        fields = ['id','mesure','quantity','isCheck','autoAdd','refListe','refProduit']
+        fields = ['id','mesure','quantity','isCheck','autoAdd','refListe','refProduit','nomProdOptional']
 
 
 # Lien entre Produit et Repas

@@ -1,3 +1,5 @@
+from asyncio.windows_events import NULL
+from gettext import NullTranslations
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -122,8 +124,8 @@ class Produit(models.Model):
     isQuantityMin = models.BooleanField(default=False)
     quantityAutoAdd = models.IntegerField(default=0)
     description = models.TextField( null=True,blank=True)
-    refStockage = models.ForeignKey(Stockage, on_delete=models.CASCADE)
-    refCategory = models.ForeignKey(Category, on_delete=models.CASCADE)
+    refStockage = models.ForeignKey(Stockage, on_delete=models.CASCADE,blank=True, null=True)
+    refCategory = models.ForeignKey(Category, on_delete=models.CASCADE,blank=True, null=True)
 
     def __str__(self):
         return self.nom
@@ -159,11 +161,12 @@ class Tache(models.Model):
 # Lien entre Produit et Liste
 class LigneListe(models.Model):
     refListe = models.ForeignKey(Liste, on_delete=models.CASCADE)
-    refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE)
+    refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE, null=True)
     mesure = models.CharField(max_length=30)
     quantity = models.IntegerField()
     isCheck = models.BooleanField(default=False)
     autoAdd = models.BooleanField(default=False)
+    nomProdOptional = models.CharField(max_length=30,blank=True, null=True)
 
     def __str__(self):
         return self.quantity
