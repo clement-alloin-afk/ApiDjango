@@ -6,7 +6,7 @@ UserList,UserDetail,
 RepasList,RepasDetail, 
 CategoryList, CategoryDetail,
 StockageList, StockageDetail,StockageListProduit,
-ProduitList,ProduitDetail,
+ProduitList,ProduitDetail,AddProduitFromCourse,
 ListeList,ListeDetail,
 TacheList,TacheDetail,ListeTacheList,
 LigneListeList,LigneRepasList,LigneRepasId,
@@ -45,6 +45,7 @@ urlpatterns = [
 
    path('Produit/', ProduitList.as_view()),
    path('Produit/<pk>/', ProduitDetail.as_view()),
+   path('AddProduit/<pk>/', AddProduitFromCourse.as_view()),
 
    path('Liste/', ListeList.as_view()),
    path('Liste/<pk>/', ListeDetail.as_view()),

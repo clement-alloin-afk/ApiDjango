@@ -93,7 +93,6 @@ class FamilyCategoryDetail(generics.RetrieveUpdateDestroyAPIView):
 class StockageList(generics.ListCreateAPIView):
     queryset = Stockage.objects.all()
     serializer_class = StockageSerializer
-    permission_classes = [IsAuthenticated]
 
 class StockageDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Stockage.objects.all()
@@ -127,6 +126,41 @@ class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Produit.objects.all()
     serializer_class = ProduitSerializer
     permission_classes = [IsAuthenticated]
+
+class AddProduitFromCourse(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Produit.objects.all()
+    serializer_class = ProduitSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_update(self, serializer):
+        produitToUpdate = Produit.objects.get(id=self.kwargs['pk'])
+        refStock = serializer.validated_data.get('refStockage')
+        # Produit n'a pas de stockage ou Ajout dans le même stock
+        if (produitToUpdate.refStockage == None or produitToUpdate.refStockage.id == refStock.id) :
+            serializer.validated_data["quantity"] = serializer.validated_data["quantity"] + produitToUpdate.quantity
+            print("save",serializer.validated_data["quantity"])
+            serializer.save()
+
+        # Ranger le produit dans un autre stock qu'actuellement : créer un nouveau produit dans ce stock si aucun n'a déjà le même nom, sinon modifier l'existant
+        else :
+            produitDansNouvStock = Produit.objects.filter(refStockage=refStock.id, nom=produitToUpdate.nom)
+            # Nouvel objet dans ce stockage
+            if (len(produitDansNouvStock) == 0 ) : 
+                Produit.objects.create(
+                nom=produitToUpdate.nom,
+                quantity= serializer.validated_data["quantity"],
+                quantityMin= 0,
+                isQuantityMin= False,
+                quantityAutoAdd= 0,
+                description= "",
+                refStockage= refStock,
+                refCategory= produitToUpdate.refCategory,
+            )
+            else: 
+                produitDansNouvStock[0].quantity = serializer.validated_data["quantity"] + produitDansNouvStock[0].quantity
+                produitDansNouvStock[0].save()
+
+
 
 class FamilyProduitList(generics.ListCreateAPIView):
     serializer_class = ProduitSerializer
