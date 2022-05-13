@@ -126,6 +126,35 @@ class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Produit.objects.all()
     serializer_class = ProduitSerializer
 
+    def perform_update(self, serializer):
+        produitToUpdate = Produit.objects.get(id=self.kwargs['pk'])
+        newQuantity = serializer.validated_data.get('quantity')
+        #Check si la quantité est mis à jour et si le produit à l'option pour l'ajout auto
+        if (newQuantity != None and produitToUpdate.isQuantityMin):
+            #Check si la quantité est diminué et si elle est égale à la quantité min
+            if (newQuantity < produitToUpdate.quantity and newQuantity == produitToUpdate.quantityMin) :
+                famille = produitToUpdate.refStockage.refFamily
+                #Check si une liste de course à déjà le produit, maj de cette ligne si c'est le cas, sinon nouvelle ligne dans la première liste
+                ligne = LigneListe.objects.filter(refProduit=produitToUpdate).first()
+                if (ligne != None ):
+                    if (ligne.quantity < produitToUpdate.quantityAutoAdd) :
+                        ligne.quantity = produitToUpdate.quantityAutoAdd
+                        ligne.autoAdd = True
+                        ligne.save()
+                else :
+                    #Première liste de course de la famille
+                    print("Add to course : ",produitToUpdate.quantityAutoAdd)
+                    liste = Liste.objects.filter(category='Course', refFamily=famille).first()
+                    LigneListe.objects.create(
+                    refListe=liste,
+                    refProduit=produitToUpdate,
+                    mesure= "Test",
+                    quantity= produitToUpdate.quantityAutoAdd,
+                    autoAdd= True,
+                    )
+
+        serializer.save()
+
 class AddProduitFromCourse(generics.RetrieveUpdateDestroyAPIView):
     queryset = Produit.objects.all()
     serializer_class = ProduitSerializer

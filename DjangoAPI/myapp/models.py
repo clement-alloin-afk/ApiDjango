@@ -27,7 +27,6 @@ class Family(models.Model):
 
     def save(self, *args, **kwargs):
         self.code = get_random_code()
-        #test = Category({"nom":"Crème","dureConservation":"2 semaines","refFamily":self.})
         return super().save(*args, **kwargs)
 
 #Populate Catégories et Espace de stockage lors de la crétion d'une famille
@@ -138,7 +137,7 @@ class PeremptionProduit(models.Model):
     refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.datePeremption
+        return str(self.datePeremption)
 
 # Liste
 class Liste(models.Model):
@@ -169,7 +168,7 @@ class LigneListe(models.Model):
     nomProdOptional = models.CharField(max_length=30,blank=True, null=True)
 
     def __str__(self):
-        return self.quantity
+        return str(self.quantity)
 
 # Lien entre Produit et Repas
 class LigneRepas(models.Model):
@@ -179,4 +178,4 @@ class LigneRepas(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        return self.quantity
+        return str(self.quantity)
