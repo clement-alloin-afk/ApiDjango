@@ -86,7 +86,7 @@ class LigneRepasSerializer(serializers.ModelSerializer):
 class PeremptionProduitSerializer(serializers.ModelSerializer):
     class Meta:
         model = PeremptionProduit
-        fields = ['id','datePeremption','quantity']
+        fields = ['id','datePeremption','quantity','refProduit']
 
 # Notification
 class NotificationSerializer(serializers.ModelSerializer):

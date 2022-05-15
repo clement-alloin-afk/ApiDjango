@@ -69,5 +69,6 @@ urlpatterns = [
    path('PeremptionProduit/<pk>/', PeremptionDetail.as_view()),
    
    path('Notification/', NotificationList.as_view()),
+   path('Notification/', NotificationList.as_view()),
    path('Notification/<pk>/', NotificationDetail.as_view()),
 ]

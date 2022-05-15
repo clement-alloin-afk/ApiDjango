@@ -33,11 +33,11 @@ class Family(models.Model):
 @receiver(post_save, sender=Family)
 def init_new_family(instance, created, raw, **kwargs):
     if created and not raw:
-        Category.objects.create(nom="Crème",dureConservation="2 semaines", refFamily=instance)
-        Category.objects.create(nom="Charcuterie",dureConservation="2 semaines", refFamily=instance)
-        Category.objects.create(nom="Viande",dureConservation="2 semaines", refFamily=instance)
-        Category.objects.create(nom="Viande surgelée",dureConservation="6 mois", refFamily=instance)
-        Stockage.objects.create(nom="Frigo",dureConservation="1 semaine", refFamily=instance)
+        Category.objects.create(nom="Crème",dureConservation=14, refFamily=instance)
+        Category.objects.create(nom="Charcuterie",dureConservation=14, refFamily=instance)
+        Category.objects.create(nom="Viande",dureConservation=14, refFamily=instance)
+        Category.objects.create(nom="Viande surgelée",dureConservation=180, refFamily=instance)
+        Stockage.objects.create(nom="Frigo",dureConservation=7, refFamily=instance)
 
 # User
 class UserManager(BaseUserManager):
@@ -94,7 +94,7 @@ class Repas(models.Model):
 # Catégorie
 class Category(models.Model): 
     nom = models.CharField(max_length=30)
-    dureConservation = models.CharField(max_length=30)
+    dureConservation = models.IntegerField() # En jour
     refFamily = models.ForeignKey(Family, on_delete=models.CASCADE)
 
     class Meta:
@@ -106,7 +106,7 @@ class Category(models.Model):
 # Stockage
 class Stockage(models.Model): 
     nom = models.CharField(max_length=30)
-    dureConservation = models.CharField(max_length=30)
+    dureConservation = models.IntegerField()
     refFamily = models.ForeignKey(Family, on_delete=models.CASCADE)
 
     class Meta:
@@ -178,13 +178,13 @@ class PeremptionProduit(models.Model):
     refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.datePeremption)
+        return self.refProduit.nom+" "+str(self.datePeremption)
 
 # Notification
 class Notification(models.Model):
     message = models.TextField()
     refPeremption = models.ForeignKey(PeremptionProduit, on_delete=models.CASCADE)
-    refFamille = models.ForeignKey(Family, on_delete=models.CASCADE)
+    refFamily = models.ForeignKey(Family, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.message

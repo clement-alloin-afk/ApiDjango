@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from datetime import date, timedelta
 
 from myapp.models import Family, Notification, PeremptionProduit, User, Repas, Category, Stockage, Produit, Liste, Tache, LigneRepas, LigneListe
 from myapp.serializers import ( FamilySerializer, NotificationSerializer, PeremptionProduitSerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer,ProduitSerializer,
@@ -70,7 +71,6 @@ class FamilyRepasDetail(generics.RetrieveUpdateDestroyAPIView):
 class CategoryList(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [IsAuthenticated]
 
 class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
@@ -122,6 +122,21 @@ class ProduitList(generics.ListCreateAPIView):
     queryset = Produit.objects.all()
     serializer_class = ProduitSerializer
 
+    
+    def perform_create(self, serializer):
+        duree = serializer.validated_data["refCategory"].dureConservation
+        print(duree)
+        print(self)
+
+        # TODO Create produit , add ref to date , create date
+
+        # date = PeremptionProduit.objects.create(
+        #     datePeremption= date.today() + timedelta(days=duree),
+        #     quantity=serializer.validated_data["quantity"],
+        #     refProduit=self,
+        # )
+        #serializer.save()
+
 class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Produit.objects.all()
     serializer_class = ProduitSerializer
@@ -146,14 +161,15 @@ class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
                     print("Add to course : ",produitToUpdate.quantityAutoAdd)
                     liste = Liste.objects.filter(category='Course', refFamily=famille).first()
                     LigneListe.objects.create(
-                    refListe=liste,
-                    refProduit=produitToUpdate,
-                    mesure= "Test",
-                    quantity= produitToUpdate.quantityAutoAdd,
-                    autoAdd= True,
+                        refListe=liste,
+                        refProduit=produitToUpdate,
+                        mesure= "Test",
+                        quantity= produitToUpdate.quantityAutoAdd,
+                        autoAdd= True,
                     )
-
         serializer.save()
+
+
 
 class AddProduitFromCourse(generics.RetrieveUpdateDestroyAPIView):
     queryset = Produit.objects.all()
