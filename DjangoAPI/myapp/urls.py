@@ -10,7 +10,9 @@ ProduitList,ProduitDetail,AddProduitFromCourse,
 ListeList,ListeDetail,
 TacheList,TacheDetail,ListeTacheList,
 LigneListeList,LigneRepasList,LigneRepasId,
-LigneListeDetail,LigneRepasDetail, LigneListeId
+LigneListeDetail,LigneRepasDetail, LigneListeId,
+NotificationList,NotificationDetail,FamilyNotificationList,
+PeremptionList,PeremptionDetail
  )
 from . import views
 
@@ -28,6 +30,7 @@ urlpatterns = [
    path('Family/<int:pkF>/Stockage/<pk>', FamilyStockageDetail.as_view()),
    path('Family/<int:pkF>/Produit/', FamilyProduitList.as_view()),
    path('Family/<int:pkF>/Liste/', FamilyListeList.as_view()),
+   path('Family/<int:pkF>/Notification/', FamilyNotificationList.as_view()),
    #path('Family/<int:pkF>/Produit/<pk>', FamilyProduitDetail.as_view()),
 
    path('User/', UserList.as_view()),
@@ -61,5 +64,10 @@ urlpatterns = [
    path('LigneListe/', LigneListeList.as_view()),
    path('LigneListeId/<pk>/', LigneListeId.as_view()),
    path('LigneListe/<pk>/', LigneListeDetail.as_view()),
+
+   path('PeremptionProduit/', PeremptionList.as_view()),
+   path('PeremptionProduit/<pk>/', PeremptionDetail.as_view()),
    
+   path('Notification/', NotificationList.as_view()),
+   path('Notification/<pk>/', NotificationDetail.as_view()),
 ]

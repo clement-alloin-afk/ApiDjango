@@ -129,16 +129,6 @@ class Produit(models.Model):
     def __str__(self):
         return self.nom
 
-# Peremption des produits
-class PeremptionProduit(models.Model):
-    datePeremption = models.DateField()
-    notifPeremption = models.IntegerField()
-    quantity = models.IntegerField()
-    refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return str(self.datePeremption)
-
 # Liste
 class Liste(models.Model):
     nom = models.CharField(max_length=30)
@@ -179,3 +169,22 @@ class LigneRepas(models.Model):
 
     def __str__(self):
         return str(self.quantity)
+
+
+# Peremption des produits
+class PeremptionProduit(models.Model):
+    datePeremption = models.DateField()
+    quantity = models.IntegerField()
+    refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.datePeremption)
+
+# Notification
+class Notification(models.Model):
+    message = models.TextField()
+    refPeremption = models.ForeignKey(PeremptionProduit, on_delete=models.CASCADE)
+    refFamille = models.ForeignKey(Family, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.message

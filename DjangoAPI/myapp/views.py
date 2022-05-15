@@ -4,8 +4,8 @@ from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from myapp.models import Family, User, Repas, Category, Stockage, Produit, Liste, Tache, LigneRepas, LigneListe
-from myapp.serializers import ( FamilySerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer,ProduitSerializer,
+from myapp.models import Family, Notification, PeremptionProduit, User, Repas, Category, Stockage, Produit, Liste, Tache, LigneRepas, LigneListe
+from myapp.serializers import ( FamilySerializer, NotificationSerializer, PeremptionProduitSerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer,ProduitSerializer,
 ListeSerializer,TacheSerializer, LigneRepasSerializer, LigneListeSerializer )
 from rest_framework import generics
 
@@ -280,3 +280,26 @@ class LigneRepasId(generics.ListCreateAPIView):
 class LigneRepasDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = LigneRepas.objects.all()
     serializer_class = LigneRepasSerializer
+
+#Notification
+class NotificationList(generics.ListCreateAPIView):
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
+
+class NotificationDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
+
+class FamilyNotificationList(generics.ListCreateAPIView):
+    serializer_class = NotificationSerializer
+    def get_queryset(self):
+        return Notification.objects.filter(refFamily=self.kwargs['pkF'])
+
+#Peremption
+class PeremptionList(generics.ListCreateAPIView):
+    queryset = PeremptionProduit.objects.all()
+    serializer_class = PeremptionProduitSerializer
+
+class PeremptionDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = PeremptionProduit.objects.all()
+    serializer_class = PeremptionProduitSerializer

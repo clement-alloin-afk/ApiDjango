@@ -2,6 +2,7 @@ from dataclasses import field
 from rest_framework import serializers
 from myapp.models import  (
     Family,
+    Notification,
     Produit,
     User, 
     Repas, 
@@ -54,13 +55,6 @@ class ProduitSerializer(serializers.ModelSerializer):
         model = Produit
         fields = ['id','nom','quantity','quantityMin','isQuantityMin','quantityAutoAdd','description','refStockage','refCategory']
 
-# Peremption des produits
-class PeremptionProduitSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PeremptionProduit
-        fields = ['id','datePeremption','notifPeremption','quantity']
-
-
 # Liste
 class ListeSerializer(serializers.ModelSerializer):
     class Meta:
@@ -82,9 +76,20 @@ class LigneListeSerializer(serializers.ModelSerializer):
         model = LigneListe
         fields = ['id','mesure','quantity','isCheck','autoAdd','refListe','refProduit','nomProdOptional']
 
-
 # Lien entre Produit et Repas
 class LigneRepasSerializer(serializers.ModelSerializer):
     class Meta:
         model = LigneRepas
         fields = ['id','mesure','quantity','refRepas','refProduit']
+
+# Peremption des produits
+class PeremptionProduitSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PeremptionProduit
+        fields = ['id','datePeremption','quantity']
+
+# Notification
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = ['id','message','refPeremption','refFamily']
