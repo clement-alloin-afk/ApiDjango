@@ -15,7 +15,6 @@ from rest_framework import generics
 class FamilyList(generics.ListCreateAPIView):
     queryset = Family.objects.all()
     serializer_class = FamilySerializer
-    permission_classes = [IsAuthenticated]
 
 class FamilyDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Family.objects.all()
@@ -130,11 +129,13 @@ class ProduitList(generics.ListCreateAPIView):
 
         # TODO Create produit , add ref to date , create date
 
-        # date = PeremptionProduit.objects.create(
-        #     datePeremption= date.today() + timedelta(days=duree),
-        #     quantity=serializer.validated_data["quantity"],
-        #     refProduit=self,
-        # )
+        produit = serializer.save()
+        peremption = PeremptionProduit.objects.create(
+            datePeremption= date.today() + timedelta(days=duree),
+            quantity=serializer.validated_data["quantity"],
+            refProduit=produit,
+        )
+        peremption.save()
         #serializer.save()
 
 class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -315,6 +316,11 @@ class FamilyNotificationList(generics.ListCreateAPIView):
 class PeremptionList(generics.ListCreateAPIView):
     queryset = PeremptionProduit.objects.all()
     serializer_class = PeremptionProduitSerializer
+
+class PeremptionListForProduit(generics.ListCreateAPIView):
+    serializer_class = PeremptionProduitSerializer
+    def get_queryset(self):
+        return PeremptionProduit.objects.filter(refProduit=self.kwargs['pk'])
 
 class PeremptionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = PeremptionProduit.objects.all()

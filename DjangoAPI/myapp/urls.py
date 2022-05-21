@@ -1,7 +1,7 @@
 from django.urls import path, re_path
 from rest_framework.urlpatterns import format_suffix_patterns
 from .views import ( FamilyList,FamilyDetail,FamilyMembresList,FamilyRepasList,FamilyRepasDetail,
-FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail,FamilyProduitList,FamilyListeList,
+FamilyCategoryList,FamilyCategoryDetail,FamilyStockageList,FamilyStockageDetail,FamilyProduitList,FamilyListeList, PeremptionListForProduit,
 UserList,UserDetail,
 RepasList,RepasDetail, 
 CategoryList, CategoryDetail,
@@ -34,7 +34,7 @@ urlpatterns = [
    #path('Family/<int:pkF>/Produit/<pk>', FamilyProduitDetail.as_view()),
 
    path('User/', UserList.as_view()),
-   path('User/<pk>', UserDetail.as_view()),
+   path('User/<pk>/', UserDetail.as_view()),
 
    path('Repas/', RepasList.as_view()),
    path('Repas/<pk>/', RepasDetail.as_view()),
@@ -67,6 +67,7 @@ urlpatterns = [
 
    path('PeremptionProduit/', PeremptionList.as_view()),
    path('PeremptionProduit/<pk>/', PeremptionDetail.as_view()),
+   path('PeremptionProduitForProduit/<pk>/', PeremptionListForProduit.as_view()),
    
    path('Notification/', NotificationList.as_view()),
    path('Notification/', NotificationList.as_view()),
