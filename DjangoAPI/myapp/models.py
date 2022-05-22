@@ -124,7 +124,7 @@ class Produit(models.Model):
     quantityAutoAdd = models.IntegerField(default=0)
     description = models.TextField( null=True,blank=True)
     refStockage = models.ForeignKey(Stockage, on_delete=models.CASCADE,blank=True, null=True)
-    refCategory = models.ForeignKey(Category, on_delete=models.CASCADE,blank=True, null=True)
+    refCategory = models.ForeignKey(Category, on_delete=models.SET_NULL,blank=True, null=True)
 
     def __str__(self):
         return self.nom

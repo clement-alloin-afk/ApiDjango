@@ -148,35 +148,15 @@ class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
         newQuantity = serializer.validated_data.get('quantity')
         listeDates = PeremptionProduit.objects.filter(refProduit=produitToUpdate).order_by('datePeremption')
         
-        #Check si la quantité est mis à jour et si le produit à l'option pour l'ajout auto
+        #Check si la quantité est mis à jour 
         if (newQuantity != None ):
-            needNewDate = True
-            # "Selection" de la date a mettre à jour
-            if (len(listeDates) != 0) :
-                dateSupposer = date.today() + timedelta(days=produitToUpdate.refCategory.dureConservation)
-                for el in listeDates:
-                    if (el.datePeremption == dateSupposer): 
-                        dateToUpdate = el
-                        needNewDate = False
-                        break
-
-            if(needNewDate) :
-                if(len(listeDates) == 0): quantityNewDate = produitToUpdate.quantity
-                else :
-                    quantityNewDate = 0
-                duree = produitToUpdate.refCategory.dureConservation
-                print(quantityNewDate)
-                dateToUpdate = PeremptionProduit.objects.create(
-                    datePeremption= date.today() + timedelta(days=duree),
-                    quantity=quantityNewDate,
-                    refProduit=produitToUpdate,
-                )
 
             #Check si la quantité est diminué 
             if (newQuantity < produitToUpdate.quantity) :
-                #Update la date date
-                dateToUpdate.quantity = dateToUpdate.quantity-1
-                dateToUpdate.save()
+
+                if (len(listeDates) != 0) :
+                    listeDates[0].quantity = listeDates[0].quantity-1
+                    listeDates[0].save()
 
                 #Check si elle est égale à la quantité min
                 if(newQuantity == produitToUpdate.quantityMin and produitToUpdate.isQuantityMin) :
@@ -200,6 +180,28 @@ class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
                             autoAdd= True,
                         )
             else :
+                # "Selection" de la date a mettre à jour
+                needNewDate = True
+                if (len(listeDates) != 0) :
+                    dateSupposer = date.today() + timedelta(days=produitToUpdate.refCategory.dureConservation)
+                    for el in listeDates:
+                        if (el.datePeremption == dateSupposer): 
+                            dateToUpdate = el
+                            needNewDate = False
+                            break
+
+                if(needNewDate) :
+                    if(len(listeDates) == 0): quantityNewDate = produitToUpdate.quantity
+                    else :
+                        quantityNewDate = 0
+                    duree = produitToUpdate.refCategory.dureConservation
+                    print(quantityNewDate)
+                    dateToUpdate = PeremptionProduit.objects.create(
+                        datePeremption= date.today() + timedelta(days=duree),
+                        quantity=quantityNewDate,
+                        refProduit=produitToUpdate,
+                    )
+
                 dateToUpdate.quantity = dateToUpdate.quantity+1
                 dateToUpdate.save()
         
