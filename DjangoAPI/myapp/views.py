@@ -142,32 +142,67 @@ class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Produit.objects.all()
     serializer_class = ProduitSerializer
 
+    # Checker pour ajout automatique et mettre à jour les date de peremption pour garder une cohérence
     def perform_update(self, serializer):
         produitToUpdate = Produit.objects.get(id=self.kwargs['pk'])
         newQuantity = serializer.validated_data.get('quantity')
+        listeDates = PeremptionProduit.objects.filter(refProduit=produitToUpdate).order_by('datePeremption')
+        
         #Check si la quantité est mis à jour et si le produit à l'option pour l'ajout auto
-        if (newQuantity != None and produitToUpdate.isQuantityMin):
-            #Check si la quantité est diminué et si elle est égale à la quantité min
-            if (newQuantity < produitToUpdate.quantity and newQuantity == produitToUpdate.quantityMin) :
-                famille = produitToUpdate.refStockage.refFamily
-                #Check si une liste de course à déjà le produit, maj de cette ligne si c'est le cas, sinon nouvelle ligne dans la première liste
-                ligne = LigneListe.objects.filter(refProduit=produitToUpdate).first()
-                if (ligne != None ):
-                    if (ligne.quantity < produitToUpdate.quantityAutoAdd) :
-                        ligne.quantity = produitToUpdate.quantityAutoAdd
-                        ligne.autoAdd = True
-                        ligne.save()
+        if (newQuantity != None ):
+            needNewDate = True
+            # "Selection" de la date a mettre à jour
+            if (len(listeDates) != 0) :
+                dateSupposer = date.today() + timedelta(days=produitToUpdate.refCategory.dureConservation)
+                for el in listeDates:
+                    if (el.datePeremption == dateSupposer): 
+                        dateToUpdate = el
+                        needNewDate = False
+                        break
+
+            if(needNewDate) :
+                if(len(listeDates) == 0): quantityNewDate = produitToUpdate.quantity
                 else :
-                    #Première liste de course de la famille
-                    print("Add to course : ",produitToUpdate.quantityAutoAdd)
-                    liste = Liste.objects.filter(category='Course', refFamily=famille).first()
-                    LigneListe.objects.create(
-                        refListe=liste,
-                        refProduit=produitToUpdate,
-                        mesure= "Test",
-                        quantity= produitToUpdate.quantityAutoAdd,
-                        autoAdd= True,
-                    )
+                    quantityNewDate = 0
+                duree = produitToUpdate.refCategory.dureConservation
+                print(quantityNewDate)
+                dateToUpdate = PeremptionProduit.objects.create(
+                    datePeremption= date.today() + timedelta(days=duree),
+                    quantity=quantityNewDate,
+                    refProduit=produitToUpdate,
+                )
+
+            #Check si la quantité est diminué 
+            if (newQuantity < produitToUpdate.quantity) :
+                #Update la date date
+                dateToUpdate.quantity = dateToUpdate.quantity-1
+                dateToUpdate.save()
+
+                #Check si elle est égale à la quantité min
+                if(newQuantity == produitToUpdate.quantityMin and produitToUpdate.isQuantityMin) :
+                    famille = produitToUpdate.refStockage.refFamily
+                    #Check si une liste de course à déjà le produit, maj de cette ligne si c'est le cas, sinon nouvelle ligne dans la première liste
+                    ligne = LigneListe.objects.filter(refProduit=produitToUpdate).first()
+                    if (ligne != None ):
+                        if (ligne.quantity < produitToUpdate.quantityAutoAdd) :
+                            ligne.quantity = produitToUpdate.quantityAutoAdd
+                            ligne.autoAdd = True
+                            ligne.save()
+                    else :
+                        #Première liste de course de la famille
+                        print("Add to course : ",produitToUpdate.quantityAutoAdd)
+                        liste = Liste.objects.filter(category='Course', refFamily=famille).first()
+                        LigneListe.objects.create(
+                            refListe=liste,
+                            refProduit=produitToUpdate,
+                            mesure= "Test",
+                            quantity= produitToUpdate.quantityAutoAdd,
+                            autoAdd= True,
+                        )
+            else :
+                dateToUpdate.quantity = dateToUpdate.quantity+1
+                dateToUpdate.save()
+        
         serializer.save()
 
 
@@ -317,6 +352,12 @@ class PeremptionList(generics.ListCreateAPIView):
     queryset = PeremptionProduit.objects.all()
     serializer_class = PeremptionProduitSerializer
 
+    def perform_create(self, serializer):
+        dateP = serializer.save()
+        dateP.refProduit.quantity = dateP.refProduit.quantity+dateP.quantity
+        dateP.refProduit.save()
+
+
 class PeremptionListForProduit(generics.ListCreateAPIView):
     serializer_class = PeremptionProduitSerializer
     def get_queryset(self):
@@ -325,3 +366,17 @@ class PeremptionListForProduit(generics.ListCreateAPIView):
 class PeremptionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = PeremptionProduit.objects.all()
     serializer_class = PeremptionProduitSerializer
+
+    def perform_update(self, serializer):
+        dateToUpdate = PeremptionProduit.objects.get(id=self.kwargs['pk'])
+
+        # Update quantité du produit si celle ci est changé
+        if (serializer.validated_data.get('quantity') != None) :
+            toAdd = 1
+            quantityAvant = dateToUpdate.quantity
+            dateP = serializer.save()
+            if (dateP.quantity < quantityAvant) : toAdd = -1
+            dateP.refProduit.quantity = dateP.refProduit.quantity+toAdd
+            dateP.refProduit.save()
+        else :
+            dateP = serializer.save()
