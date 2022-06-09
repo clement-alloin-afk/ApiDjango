@@ -53,7 +53,7 @@ class StockageSerializer(serializers.ModelSerializer):
 class ProduitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produit
-        fields = ['id','nom','quantity','quantityMin','isQuantityMin','quantityAutoAdd','description','refStockage','refCategory']
+        fields = ['id','nom','quantity','quantityMin','isQuantityMin','quantityAutoAdd','description','mesure','refStockage','refCategory']
 
 # Liste
 class ListeSerializer(serializers.ModelSerializer):
@@ -71,7 +71,6 @@ class TacheSerializer(serializers.ModelSerializer):
 class LigneListeSerializer(serializers.ModelSerializer):
     refProduit = serializers.PrimaryKeyRelatedField(allow_null=True, queryset=Produit.objects.all())
     nomProdOptional = serializers.CharField(required=False)
-    print(Produit.objects.all())
     class Meta:
         model = LigneListe
         fields = ['id','mesure','quantity','isCheck','autoAdd','refListe','refProduit','nomProdOptional']

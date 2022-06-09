@@ -38,6 +38,7 @@ def init_new_family(instance, created, raw, **kwargs):
         Category.objects.create(nom="Viande",dureConservation=14, refFamily=instance)
         Category.objects.create(nom="Viande surgelée",dureConservation=180, refFamily=instance)
         Stockage.objects.create(nom="Frigo",dureConservation=7, refFamily=instance)
+        Liste.objects.create(nom="Mes courses",category="Course", refFamily=instance)
 
 # User
 class UserManager(BaseUserManager):
@@ -121,8 +122,9 @@ class Produit(models.Model):
     quantity = models.IntegerField()
     quantityMin = models.IntegerField(null=True)
     isQuantityMin = models.BooleanField(default=False)
-    quantityAutoAdd = models.IntegerField(default=0)
+    quantityAutoAdd = models.IntegerField(null=True)
     description = models.TextField( null=True,blank=True)
+    mesure = models.CharField( max_length=30,default="pièce")
     refStockage = models.ForeignKey(Stockage, on_delete=models.CASCADE,blank=True, null=True)
     refCategory = models.ForeignKey(Category, on_delete=models.SET_NULL,blank=True, null=True)
 
