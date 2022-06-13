@@ -655,7 +655,7 @@
   "model": "myapp.repas",
   "pk": 1,
   "fields": {
-    "nom": "Pâtes carbonara",
+    "nom": "PÃ¢tes carbonara",
     "refFamily": 2
   }
 },
@@ -663,7 +663,7 @@
   "model": "myapp.category",
   "pk": 1,
   "fields": {
-    "nom": "Crème",
+    "nom": "CrÃ¨me",
     "dureConservation": 14,
     "refFamily": 1
   }
@@ -690,7 +690,7 @@
   "model": "myapp.category",
   "pk": 4,
   "fields": {
-    "nom": "Viande surgelée",
+    "nom": "Viande surgelÃ©e",
     "dureConservation": 180,
     "refFamily": 1
   }
@@ -699,7 +699,7 @@
   "model": "myapp.category",
   "pk": 5,
   "fields": {
-    "nom": "Crème",
+    "nom": "CrÃ¨me",
     "dureConservation": 14,
     "refFamily": 2
   }
@@ -726,7 +726,7 @@
   "model": "myapp.category",
   "pk": 8,
   "fields": {
-    "nom": "Viande surgelée",
+    "nom": "Viande surgelÃ©e",
     "dureConservation": 180,
     "refFamily": 2
   }
@@ -744,7 +744,7 @@
   "model": "myapp.category",
   "pk": 10,
   "fields": {
-    "nom": "Légumes",
+    "nom": "LÃ©gumes",
     "dureConservation": 7,
     "refFamily": 2
   }
@@ -807,7 +807,7 @@
   "model": "myapp.stockage",
   "pk": 6,
   "fields": {
-    "nom": "Congélateur Cuisine",
+    "nom": "CongÃ©lateur Cuisine",
     "dureConservation": 120,
     "refFamily": 2
   }
@@ -838,7 +838,7 @@
     "isQuantityMin": false,
     "quantityAutoAdd": 0,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": 3,
     "refCategory": 6
@@ -854,7 +854,7 @@
     "isQuantityMin": false,
     "quantityAutoAdd": null,
     "description": "Granny smith",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": 2,
     "refCategory": 9
@@ -870,7 +870,7 @@
     "isQuantityMin": false,
     "quantityAutoAdd": 0,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": null,
     "refCategory": null
@@ -880,13 +880,13 @@
   "model": "myapp.produit",
   "pk": 6,
   "fields": {
-    "nom": "Viande haché",
+    "nom": "Viande hachÃ©",
     "quantity": 0,
     "quantityMin": 0,
     "isQuantityMin": false,
     "quantityAutoAdd": 0,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": null,
     "refCategory": null
@@ -902,7 +902,7 @@
     "isQuantityMin": false,
     "quantityAutoAdd": 0,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": null,
     "refCategory": null
@@ -918,7 +918,7 @@
     "isQuantityMin": false,
     "quantityAutoAdd": null,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": 2,
     "refCategory": 5
@@ -934,7 +934,7 @@
     "isQuantityMin": false,
     "quantityAutoAdd": null,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": 2,
     "refCategory": 5
@@ -982,7 +982,7 @@
     "isQuantityMin": false,
     "quantityAutoAdd": null,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": 5,
     "refCategory": 11
@@ -992,13 +992,13 @@
   "model": "myapp.produit",
   "pk": 13,
   "fields": {
-    "nom": "Spéculos",
+    "nom": "SpÃ©culos",
     "quantity": 12,
     "quantityMin": null,
     "isQuantityMin": false,
     "quantityAutoAdd": null,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": 5,
     "refCategory": 11
@@ -1014,7 +1014,7 @@
     "isQuantityMin": false,
     "quantityAutoAdd": null,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": 2,
     "refCategory": 7
@@ -1030,7 +1030,7 @@
     "isQuantityMin": false,
     "quantityAutoAdd": null,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": 5,
     "refCategory": 12
@@ -1040,13 +1040,13 @@
   "model": "myapp.produit",
   "pk": 16,
   "fields": {
-    "nom": "Crème",
+    "nom": "CrÃ¨me",
     "quantity": 4,
     "quantityMin": null,
     "isQuantityMin": false,
     "quantityAutoAdd": null,
     "description": "",
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "notifPeremption": 2,
     "refStockage": 2,
     "refCategory": 5
@@ -1065,8 +1065,8 @@
   "model": "myapp.liste",
   "pk": 2,
   "fields": {
-    "nom": "Tâches pour Ionic",
-    "category": "Tâche",
+    "nom": "TÃ¢ches pour Ionic",
+    "category": "TÃ¢che",
     "refFamily": 2
   }
 },
@@ -1075,7 +1075,7 @@
   "pk": 3,
   "fields": {
     "nom": "A ranger",
-    "category": "Tâche",
+    "category": "TÃ¢che",
     "refFamily": 2
   }
 },
@@ -1083,7 +1083,7 @@
   "model": "myapp.tache",
   "pk": 1,
   "fields": {
-    "nom": "Vêtements",
+    "nom": "VÃªtements",
     "isCheck": false,
     "refListe": 3
   }
@@ -1121,7 +1121,7 @@
   "fields": {
     "refListe": 1,
     "refProduit": 4,
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "quantity": 3,
     "isCheck": false,
     "autoAdd": false,
@@ -1134,7 +1134,7 @@
   "fields": {
     "refListe": 1,
     "refProduit": 5,
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "quantity": 1,
     "isCheck": false,
     "autoAdd": false,
@@ -1151,7 +1151,7 @@
     "quantity": 2,
     "isCheck": false,
     "autoAdd": false,
-    "nomProdOptional": "Viande haché"
+    "nomProdOptional": "Viande hachÃ©"
   }
 },
 {
@@ -1160,7 +1160,7 @@
   "fields": {
     "refListe": 1,
     "refProduit": 7,
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "quantity": 4,
     "isCheck": false,
     "autoAdd": false,
@@ -1173,7 +1173,7 @@
   "fields": {
     "refRepas": 1,
     "refProduit": 15,
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "quantity": 1
   }
 },
@@ -1183,7 +1183,7 @@
   "fields": {
     "refRepas": 1,
     "refProduit": 14,
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "quantity": 2
   }
 },
@@ -1193,7 +1193,7 @@
   "fields": {
     "refRepas": 1,
     "refProduit": 16,
-    "mesure": "pièce",
+    "mesure": "piÃ¨ce",
     "quantity": 2
   }
 },

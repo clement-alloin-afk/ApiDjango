@@ -10,6 +10,7 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(f'Starting long-running job.'))
 
         while True:
+            self.stdout.write(self.style.SUCCESS(f'Check des dates pour créer des notifications...'))
             listeDate = PeremptionProduit.objects.all()
 
             for dateP in listeDate:
@@ -25,5 +26,5 @@ class Command(BaseCommand):
                             refFamily = refFamily,
                         )
 
-            sleep(5)
+            sleep(360)
         
