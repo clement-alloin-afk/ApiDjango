@@ -12,7 +12,7 @@ TacheList,TacheDetail,ListeTacheList,
 LigneListeList,LigneRepasList,LigneRepasId,
 LigneListeDetail,LigneRepasDetail, LigneListeId,
 NotificationList,NotificationDetail,FamilyNotificationList,
-PeremptionList,PeremptionDetail
+PeremptionList,PeremptionDetail,NotificationProduitDetail
  )
 from . import views
 
@@ -70,6 +70,6 @@ urlpatterns = [
    path('PeremptionProduitForProduit/<pk>/', PeremptionListForProduit.as_view()),
    
    path('Notification/', NotificationList.as_view()),
-   path('Notification/', NotificationList.as_view()),
    path('Notification/<pk>/', NotificationDetail.as_view()),
+   path('NotificationProduit/<pk>/', NotificationProduitDetail.as_view()),
 ]

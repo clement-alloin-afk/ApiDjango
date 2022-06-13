@@ -350,6 +350,15 @@ class NotificationDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Notification.objects.all()
     serializer_class = NotificationSerializer
 
+class NotificationProduitDetail(generics.ListCreateAPIView):
+    serializer_class = ProduitSerializer
+    def get_queryset(self):
+        notifs = Notification.objects.filter(id=self.kwargs['pk'])
+        if (len(notifs) !=0):
+            produit = notifs[0].refPeremption.refProduit
+            return Produit.objects.filter(id=produit.id)
+
+
 class FamilyNotificationList(generics.ListCreateAPIView):
     serializer_class = NotificationSerializer
     def get_queryset(self):
@@ -405,3 +414,4 @@ class PeremptionDetail(generics.RetrieveUpdateDestroyAPIView):
             dateP.refProduit.save()
         else :
             dateP = serializer.save()
+
