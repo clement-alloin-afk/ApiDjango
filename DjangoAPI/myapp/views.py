@@ -1,9 +1,11 @@
 from asyncio.windows_events import NULL
+from operator import truediv
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from datetime import date, timedelta
+from rest_framework import status
 
 from myapp.models import Family, Notification, PeremptionProduit, User, Repas, Category, Stockage, Produit, Liste, Tache, LigneRepas, LigneListe
 from myapp.serializers import ( FamilySerializer, NotificationSerializer, PeremptionProduitSerializer, UserSerializer, RepasSerializer, CategorySerializer, StockageSerializer,ProduitSerializer,
@@ -356,15 +358,32 @@ class PeremptionList(generics.ListCreateAPIView):
     serializer_class = PeremptionProduitSerializer
 
     def perform_create(self, serializer):
-        dateP = serializer.save()
-        dateP.refProduit.quantity = dateP.refProduit.quantity+dateP.quantity
-        dateP.refProduit.save()
+        #Checkez si la même date existe déjà, ajouter à celle là si c'est le cas.
+        #liste des date du produit
+        listeDates = PeremptionProduit.objects.filter(refProduit=serializer.validated_data["refProduit"]).order_by('datePeremption')
+        if (len(listeDates) != 0):
+            addToOldDate = False
+            for date in listeDates:
+                if (date.datePeremption == serializer.validated_data["datePeremption"]):
+                    addToOldDate = True
+                    date.quantity = date.quantity +serializer.validated_data["quantity"]
+                    date.refProduit.quantity = date.refProduit.quantity +serializer.validated_data["quantity"]
+                    date.save()
+                    date.refProduit.save()
+                    break
+
+        if (not addToOldDate):
+            dateP = serializer.save()
+            dateP.refProduit.quantity = dateP.refProduit.quantity+dateP.quantity
+            dateP.refProduit.save()
+            print(self.get_success_headers(serializer.data))
 
 
 class PeremptionListForProduit(generics.ListCreateAPIView):
     serializer_class = PeremptionProduitSerializer
     def get_queryset(self):
         return PeremptionProduit.objects.filter(refProduit=self.kwargs['pk'])
+
 
 class PeremptionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = PeremptionProduit.objects.all()
