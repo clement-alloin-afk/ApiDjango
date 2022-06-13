@@ -53,7 +53,7 @@ class StockageSerializer(serializers.ModelSerializer):
 class ProduitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produit
-        fields = ['id','nom','quantity','quantityMin','isQuantityMin','quantityAutoAdd','description','mesure','refStockage','refCategory']
+        fields = ['id','nom','quantity','quantityMin','isQuantityMin','quantityAutoAdd','description','mesure','notifPeremption','refStockage','refCategory']
 
 # Liste
 class ListeSerializer(serializers.ModelSerializer):
@@ -85,7 +85,7 @@ class LigneRepasSerializer(serializers.ModelSerializer):
 class PeremptionProduitSerializer(serializers.ModelSerializer):
     class Meta:
         model = PeremptionProduit
-        fields = ['id','datePeremption','quantity','refProduit']
+        fields = ['id','datePeremption','notifPeremption','quantity','refProduit']
 
 # Notification
 class NotificationSerializer(serializers.ModelSerializer):

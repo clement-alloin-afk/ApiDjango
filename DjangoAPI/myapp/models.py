@@ -125,6 +125,7 @@ class Produit(models.Model):
     quantityAutoAdd = models.IntegerField(null=True)
     description = models.TextField( null=True,blank=True)
     mesure = models.CharField( max_length=30,default="pièce")
+    notifPeremption = models.IntegerField(default=2)
     refStockage = models.ForeignKey(Stockage, on_delete=models.CASCADE,blank=True, null=True)
     refCategory = models.ForeignKey(Category, on_delete=models.SET_NULL,blank=True, null=True)
 
@@ -177,6 +178,7 @@ class LigneRepas(models.Model):
 class PeremptionProduit(models.Model):
     datePeremption = models.DateField()
     quantity = models.IntegerField()
+    notifPeremption = models.IntegerField(default=2)
     refProduit = models.ForeignKey(Produit, on_delete=models.CASCADE)
 
     def __str__(self):

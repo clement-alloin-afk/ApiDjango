@@ -132,6 +132,7 @@ class ProduitList(generics.ListCreateAPIView):
         peremption = PeremptionProduit.objects.create(
             datePeremption= date.today() + timedelta(days=duree),
             quantity=serializer.validated_data["quantity"],
+            notifPeremption=produit.notifPeremption,
             refProduit=produit,
         )
         peremption.save()
@@ -195,6 +196,7 @@ class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
                     dateToUpdate = PeremptionProduit.objects.create(
                         datePeremption= date.today() + timedelta(days=duree),
                         quantity=quantityNewDate,
+                        notifPeremption=produitToUpdate.notifPeremption,
                         refProduit=produitToUpdate,
                     )
 
@@ -218,6 +220,7 @@ class AddProduitFromCourse(generics.RetrieveUpdateDestroyAPIView):
         peremption = PeremptionProduit.objects.create(
             datePeremption= date.today() + timedelta(days=duree),
             quantity=serializer.validated_data["quantity"],
+            notifPeremption=produitToUpdate.notifPeremption,
             refProduit=produitToUpdate,
         )
         peremption.save()
