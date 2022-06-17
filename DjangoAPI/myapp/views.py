@@ -371,9 +371,9 @@ class PeremptionList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         #Checkez si la même date existe déjà, ajouter à celle là si c'est le cas.
         #liste des date du produit
+        addToOldDate = False
         listeDates = PeremptionProduit.objects.filter(refProduit=serializer.validated_data["refProduit"]).order_by('datePeremption')
         if (len(listeDates) != 0):
-            addToOldDate = False
             for date in listeDates:
                 if (date.datePeremption == serializer.validated_data["datePeremption"]):
                     addToOldDate = True
@@ -387,7 +387,6 @@ class PeremptionList(generics.ListCreateAPIView):
             dateP = serializer.save()
             dateP.refProduit.quantity = dateP.refProduit.quantity+dateP.quantity
             dateP.refProduit.save()
-            print(self.get_success_headers(serializer.data))
 
 
 class PeremptionListForProduit(generics.ListCreateAPIView):
