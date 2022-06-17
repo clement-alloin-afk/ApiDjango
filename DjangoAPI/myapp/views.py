@@ -41,7 +41,6 @@ class UserDetail(generics.RetrieveUpdateDestroyAPIView):
 def FamilyCode(request, code):
     fam = Family.objects.get(code=code)
     serializer = FamilySerializer(fam)
-    permission_classes = [IsAuthenticated]
     return Response(serializer.data)
 
 #Repas
@@ -126,8 +125,6 @@ class ProduitList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         duree = serializer.validated_data["refCategory"].dureConservation
 
-        # TODO Create produit , add ref to date , create date
-
         produit = serializer.save()
         peremption = PeremptionProduit.objects.create(
             datePeremption= date.today() + timedelta(days=duree),
@@ -153,7 +150,8 @@ class ProduitDetail(generics.RetrieveUpdateDestroyAPIView):
             if (newQuantity < produitToUpdate.quantity) :
                 if (len(listeDates) != 0) :
                     listeDates[0].quantity = listeDates[0].quantity-1
-                    listeDates[0].save()
+                    if (listeDates[0].quantity == 0) : listeDates[0].delete()
+                    else : listeDates[0].save()
 
                 #Check si elle est égale à la quantité min
                 if(newQuantity == produitToUpdate.quantityMin and produitToUpdate.isQuantityMin) :
@@ -216,7 +214,8 @@ class AddProduitFromCourse(generics.RetrieveUpdateDestroyAPIView):
         produitToUpdate = Produit.objects.get(id=self.kwargs['pk'])
         refStock = serializer.validated_data.get('refStockage')
         #Nouvelle date de péremption
-        duree = produitToUpdate.refCategory.dureConservation
+        if (produitToUpdate.refCategory != None) : duree = produitToUpdate.refCategory.dureConservation
+        else : duree = refStock.dureConservation
         peremption = PeremptionProduit.objects.create(
             datePeremption= date.today() + timedelta(days=duree),
             quantity=serializer.validated_data["quantity"],
