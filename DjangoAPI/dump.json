@@ -660,6 +660,22 @@
   }
 },
 {
+  "model": "myapp.repas",
+  "pk": 2,
+  "fields": {
+    "nom": "Pizza maison",
+    "refFamily": 2
+  }
+},
+{
+  "model": "myapp.repas",
+  "pk": 3,
+  "fields": {
+    "nom": "Hamburger",
+    "refFamily": 2
+  }
+},
+{
   "model": "myapp.category",
   "pk": 1,
   "fields": {
@@ -768,6 +784,15 @@
   }
 },
 {
+  "model": "myapp.category",
+  "pk": 13,
+  "fields": {
+    "nom": "Farines",
+    "dureConservation": 150,
+    "refFamily": 2
+  }
+},
+{
   "model": "myapp.stockage",
   "pk": 1,
   "fields": {
@@ -817,7 +842,7 @@
   "pk": 1,
   "fields": {
     "nom": "Jambon de poulet",
-    "quantity": 9,
+    "quantity": 6,
     "quantityMin": 2,
     "isQuantityMin": true,
     "quantityAutoAdd": 2,
@@ -1053,6 +1078,102 @@
   }
 },
 {
+  "model": "myapp.produit",
+  "pk": 17,
+  "fields": {
+    "nom": "Farine",
+    "quantity": 5,
+    "quantityMin": null,
+    "isQuantityMin": false,
+    "quantityAutoAdd": null,
+    "description": "",
+    "mesure": "Kg",
+    "notifPeremption": 2,
+    "refStockage": 5,
+    "refCategory": 13
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 18,
+  "fields": {
+    "nom": "Cheddar",
+    "quantity": 2,
+    "quantityMin": null,
+    "isQuantityMin": false,
+    "quantityAutoAdd": null,
+    "description": "",
+    "mesure": "Paquet",
+    "notifPeremption": 2,
+    "refStockage": 3,
+    "refCategory": 5
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 19,
+  "fields": {
+    "nom": "Cornichons",
+    "quantity": 3,
+    "quantityMin": null,
+    "isQuantityMin": false,
+    "quantityAutoAdd": null,
+    "description": "",
+    "mesure": "Bocal",
+    "notifPeremption": 5,
+    "refStockage": 5,
+    "refCategory": 12
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 20,
+  "fields": {
+    "nom": "Bacon",
+    "quantity": 0,
+    "quantityMin": null,
+    "isQuantityMin": false,
+    "quantityAutoAdd": null,
+    "description": "",
+    "mesure": "Paquet",
+    "notifPeremption": 2,
+    "refStockage": 3,
+    "refCategory": 6
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 21,
+  "fields": {
+    "nom": "Viande haché",
+    "quantity": 2,
+    "quantityMin": null,
+    "isQuantityMin": false,
+    "quantityAutoAdd": null,
+    "description": "",
+    "mesure": "kg",
+    "notifPeremption": 2,
+    "refStockage": 2,
+    "refCategory": 7
+  }
+},
+{
+  "model": "myapp.produit",
+  "pk": 22,
+  "fields": {
+    "nom": "Pain hamburger",
+    "quantity": 1,
+    "quantityMin": null,
+    "isQuantityMin": false,
+    "quantityAutoAdd": null,
+    "description": "6 par paquet",
+    "mesure": "pièce",
+    "notifPeremption": 2,
+    "refStockage": 5,
+    "refCategory": 12
+  }
+},
+{
   "model": "myapp.liste",
   "pk": 1,
   "fields": {
@@ -1168,6 +1289,19 @@
   }
 },
 {
+  "model": "myapp.ligneliste",
+  "pk": 11,
+  "fields": {
+    "refListe": 1,
+    "refProduit": 1,
+    "mesure": "boite",
+    "quantity": 2,
+    "isCheck": false,
+    "autoAdd": true,
+    "nomProdOptional": null
+  }
+},
+{
   "model": "myapp.lignerepas",
   "pk": 1,
   "fields": {
@@ -1198,33 +1332,33 @@
   }
 },
 {
-  "model": "myapp.peremptionproduit",
-  "pk": 14,
+  "model": "myapp.lignerepas",
+  "pk": 4,
   "fields": {
-    "datePeremption": "2022-06-26",
-    "quantity": 2,
-    "notifPeremption": 2,
-    "refProduit": 1
+    "refRepas": 3,
+    "refProduit": 20,
+    "mesure": "pièce",
+    "quantity": 1
   }
 },
 {
-  "model": "myapp.peremptionproduit",
-  "pk": 16,
+  "model": "myapp.lignerepas",
+  "pk": 5,
   "fields": {
-    "datePeremption": "2022-06-27",
-    "quantity": 5,
-    "notifPeremption": 2,
-    "refProduit": 1
+    "refRepas": 3,
+    "refProduit": 19,
+    "mesure": "pièce",
+    "quantity": 1
   }
 },
 {
-  "model": "myapp.peremptionproduit",
-  "pk": 18,
+  "model": "myapp.lignerepas",
+  "pk": 6,
   "fields": {
-    "datePeremption": "2022-06-30",
-    "quantity": 2,
-    "notifPeremption": 2,
-    "refProduit": 1
+    "refRepas": 3,
+    "refProduit": 22,
+    "mesure": "pièce",
+    "quantity": 1
   }
 },
 {
@@ -1232,17 +1366,7 @@
   "pk": 19,
   "fields": {
     "datePeremption": "2022-06-20",
-    "quantity": 5,
-    "notifPeremption": 2,
-    "refProduit": 4
-  }
-},
-{
-  "model": "myapp.peremptionproduit",
-  "pk": 20,
-  "fields": {
-    "datePeremption": "2022-06-21",
-    "quantity": 2,
+    "quantity": 4,
     "notifPeremption": 2,
     "refProduit": 4
   }
@@ -1332,9 +1456,145 @@
   "pk": 30,
   "fields": {
     "datePeremption": "2022-06-27",
-    "quantity": 4,
+    "quantity": 2,
     "notifPeremption": 2,
     "refProduit": 16
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 31,
+  "fields": {
+    "datePeremption": "2022-11-14",
+    "quantity": 5,
+    "notifPeremption": 2,
+    "refProduit": 17
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 32,
+  "fields": {
+    "datePeremption": "2022-07-01",
+    "quantity": 2,
+    "notifPeremption": 2,
+    "refProduit": 18
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 33,
+  "fields": {
+    "datePeremption": "2022-07-17",
+    "quantity": 2,
+    "notifPeremption": 2,
+    "refProduit": 19
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 35,
+  "fields": {
+    "datePeremption": "2022-07-01",
+    "quantity": 2,
+    "notifPeremption": 2,
+    "refProduit": 21
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 36,
+  "fields": {
+    "datePeremption": "2022-07-17",
+    "quantity": 1,
+    "notifPeremption": 2,
+    "refProduit": 22
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 37,
+  "fields": {
+    "datePeremption": "2022-06-22",
+    "quantity": 2,
+    "notifPeremption": 2,
+    "refProduit": 1
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 38,
+  "fields": {
+    "datePeremption": "2022-07-04",
+    "quantity": 4,
+    "notifPeremption": 2,
+    "refProduit": 1
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 39,
+  "fields": {
+    "datePeremption": "2022-06-24",
+    "quantity": 3,
+    "notifPeremption": 2,
+    "refProduit": 4
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 40,
+  "fields": {
+    "datePeremption": "2022-06-22",
+    "quantity": 2,
+    "notifPeremption": 2,
+    "refProduit": 16
+  }
+},
+{
+  "model": "myapp.peremptionproduit",
+  "pk": 41,
+  "fields": {
+    "datePeremption": "2022-06-24",
+    "quantity": 1,
+    "notifPeremption": 2,
+    "refProduit": 19
+  }
+},
+{
+  "model": "myapp.notification",
+  "pk": 1,
+  "fields": {
+    "message": "Le produit Pomme verte va bientôt périmer dans Frigo",
+    "refPeremption": 19,
+    "refFamily": 2
+  }
+},
+{
+  "model": "myapp.notification",
+  "pk": 2,
+  "fields": {
+    "message": "Le produit Jambon de poulet va bientôt périmer dans Frigo",
+    "refPeremption": 37,
+    "refFamily": 2
+  }
+},
+{
+  "model": "myapp.notification",
+  "pk": 3,
+  "fields": {
+    "message": "Le produit Crème va bientôt périmer dans Frigo",
+    "refPeremption": 40,
+    "refFamily": 2
+  }
+},
+{
+  "model": "myapp.notification",
+  "pk": 4,
+  "fields": {
+    "message": "Le produit Cornichons va bientôt périmer dans Garde Manger 1",
+    "refPeremption": 41,
+    "refFamily": 2
   }
 }
 ]
